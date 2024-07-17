@@ -1,3 +1,25 @@
 body {
-    background-color: skyblue;
+   
+}
+nav{
+    height: 100px;
+    width: 1920px ;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+.logo{
+    height: 50px;
+    width: 50px;
+    background-image: url(/assets/logo/logo_ring_side\ 1.png) ;
+    background-repeat: no-repeat;
+}
+button nav{
+    background-color: red;
+   
+}
+header{
+    background-image: url(/assets/img/2-Slider-Grec_Nico-1920x800-1\ 1.png);
 }
