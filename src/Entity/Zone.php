@@ -26,7 +26,7 @@ class Zone
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
 
     /**
      * @var Collection<int, Cour>
@@ -87,12 +87,12 @@ class Zone
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(user $user): static
+    public function setUser(User $user): static
     {
         $this->user = $user;
 

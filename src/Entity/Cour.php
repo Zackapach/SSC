@@ -36,18 +36,18 @@ class Cour
 
     #[ORM\ManyToOne(inversedBy: 'cour')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'cour')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?zone $zone = null;
+    private ?Zone $zone = null;
 
     #[ORM\Column]
     private ?int $nombrePlaceDisponible = null;
 
     #[ORM\ManyToOne(inversedBy: 'cour')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?notification $notifcation = null;
+    private ?Notification $notifcation = null;
 
     /**
      * @var Collection<int, Planing>
@@ -151,24 +151,24 @@ class Cour
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getZone(): ?zone
+    public function getZone(): ?Zone
     {
         return $this->zone;
     }
 
-    public function setZone(?zone $zone): static
+    public function setZone(?Zone $zone): static
     {
         $this->zone = $zone;
 
@@ -187,12 +187,12 @@ class Cour
         return $this;
     }
 
-    public function getNotifcation(): ?notification
+    public function getNotifcation(): ?Notification
     {
         return $this->notifcation;
     }
 
-    public function setNotifcation(?notification $notifcation): static
+    public function setNotifcation(?Notification $notifcation): static
     {
         $this->notifcation = $notifcation;
 

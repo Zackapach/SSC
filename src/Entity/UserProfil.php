@@ -34,7 +34,7 @@ class UserProfil
 
     #[ORM\OneToOne(inversedBy: 'userProfil', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -113,12 +113,12 @@ class UserProfil
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(user $user): static
+    public function setUser(User $user): static
     {
         $this->user = $user;
 

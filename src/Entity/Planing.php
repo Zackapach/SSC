@@ -16,7 +16,7 @@ class Planing
 
     #[ORM\ManyToOne(inversedBy: 'planing')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?cour $cour = null;
+    private ?Cour $cour = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
@@ -29,19 +29,19 @@ class Planing
 
     #[ORM\ManyToOne(inversedBy: 'planing')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?zone $zone = null;
+    private ?Zone $zone = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCour(): ?cour
+    public function getCour(): ?Cour
     {
         return $this->cour;
     }
 
-    public function setCour(?cour $cour): static
+    public function setCour(?Cour $cour): static
     {
         $this->cour = $cour;
 
@@ -84,12 +84,12 @@ class Planing
         return $this;
     }
 
-    public function getZone(): ?zone
+    public function getZone(): ?Zone
     {
         return $this->zone;
     }
 
-    public function setZone(?zone $zone): static
+    public function setZone(?Zone $zone): static
     {
         $this->zone = $zone;
 

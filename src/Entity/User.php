@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -82,6 +83,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Infos::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $infos;
 
+    #[ORM\Column]
+    private bool $isVerified = false;
+
     public function __construct()
     {
         $this->notifications = new ArrayCollection();
@@ -90,6 +94,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->reservation = new ArrayCollection();
         $this->avis = new ArrayCollection();
         $this->infos = new ArrayCollection();
+        $this->isActive = true;
+        $this->createdAt = new DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -386,5 +392,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setVerified(bool $isVerified): static
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 }

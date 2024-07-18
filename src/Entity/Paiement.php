@@ -16,7 +16,7 @@ class Paiement
 
     #[ORM\ManyToOne(inversedBy: 'paiements')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $amount = null;
@@ -29,12 +29,12 @@ class Paiement
         return $this->id;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 

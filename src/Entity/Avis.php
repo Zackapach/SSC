@@ -15,11 +15,11 @@ class Avis
 
     #[ORM\ManyToOne(inversedBy: 'avis')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'avis')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?cour $cour = null;
+    private ?Cour $cour = null;
 
     #[ORM\Column]
     private ?int $notation = null;
@@ -35,24 +35,24 @@ class Avis
         return $this->id;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getCour(): ?cour
+    public function getCour(): ?Cour
     {
         return $this->cour;
     }
 
-    public function setCour(?cour $cour): static
+    public function setCour(?Cour $cour): static
     {
         $this->cour = $cour;
 
