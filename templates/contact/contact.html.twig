@@ -1,0 +1,15 @@
+<section class="contact-form">
+	{{ form_start(contactForm) }}
+	<article>
+		{{ form_row(contactForm.nom) }}
+		{{ form_row(contactForm.prenom) }}
+	</article>
+	<article>
+		{{ form_row(contactForm.email) }}
+		{{ form_row(contactForm.telephone) }}
+	</article>
+	<div class="text-contact">{{ form_row(contactForm.texte) }}</div>
+	{{ form_row(contactForm.submit) }}
+	{{ form_end(contactForm) }}
+</section>
+ 

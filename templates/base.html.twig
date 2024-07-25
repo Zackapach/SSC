@@ -11,6 +11,8 @@
 		{% block javascripts %}
 			{% block importmap %}
 				{{ importmap('app') }}
+				{{ importmap('form') }}
+				{{ importmap('footer') }}
 			{% endblock %}
 		{% endblock %}
 	</head>
@@ -25,18 +27,12 @@
 
 		{% block header %} {% endblock %}
 		
-			<header>
-				<div class="hero">
-
-                <h1>Votre salle
-                 d'entrainement</h1>
-                <a href=""><button class="button">s'inscrire</button></a>
-                </div>
-			</header>
-
+		{% block body %}
 		
-
-		{% block body %}{% endblock %}
-		{% block footer %}{% endblock %}
+		{% endblock %}
+		
+		{% block footer %}
+		{% include '_partials/_footer.html.twig' %}
+		{% endblock %}
 	</body>
 </html>

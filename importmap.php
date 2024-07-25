@@ -6,6 +6,14 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
+    'form' => [
+        'path' => './assets/form.js',
+        'entrypoint' => true,
+    ],
+    'footer' => [
+        'path' => './assets/footer.js',
+        'entrypoint' => true,
+    ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],

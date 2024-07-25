@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserProfil index{% endblock %}
+
+{% block body %}
+    <h1>UserProfil index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Phone</th>
+                <th>Adress</th>
+                <th>DateOfBirth</th>
+                <th>Bio</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user_profil in user_profils %}
+            <tr>
+                <td>{{ user_profil.id }}</td>
+                <td>{{ user_profil.firstName }}</td>
+                <td>{{ user_profil.lastName }}</td>
+                <td>{{ user_profil.phone }}</td>
+                <td>{{ user_profil.adress }}</td>
+                <td>{{ user_profil.dateOfBirth ? user_profil.dateOfBirth|date('Y-m-d') : '' }}</td>
+                <td>{{ user_profil.bio }}</td>
+                <td>
+                    <a href="{{ path('app_user_profil_modif_show', {'id': user_profil.id}) }}">show</a>
+                    <a href="{{ path('app_user_profil_modif_edit', {'id': user_profil.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_profil_modif_new') }}">Create new</a>
+{% endblock %}

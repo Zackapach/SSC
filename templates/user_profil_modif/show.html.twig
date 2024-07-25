@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserProfil{% endblock %}
+
+{% block body %}
+    <h1>UserProfil</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user_profil.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ user_profil.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ user_profil.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ user_profil.phone }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ user_profil.adress }}</td>
+            </tr>
+            <tr>
+                <th>DateOfBirth</th>
+                <td>{{ user_profil.dateOfBirth ? user_profil.dateOfBirth|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Bio</th>
+                <td>{{ user_profil.bio }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_profil_modif_index') }}">back to list</a>
+
+    <a href="{{ path('app_user_profil_modif_edit', {'id': user_profil.id}) }}">edit</a>
+
+    {{ include('user_profil_modif/_delete_form.html.twig') }}
+{% endblock %}

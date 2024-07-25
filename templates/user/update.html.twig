@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification de mot de passe{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    
+    <h1>Modification du mot de passe</h1>
+
+    {{ form_errors(form) }}
+
+    {{ form_start(form) }}
+    
+    {{ form_row(form.currentPassword) }}
+    {{ form_row(form.newPassword.first) }}
+    {{ form_row(form.newPassword.second) }}
+
+    <button type="submit" class="btn btn-primary">Modifier le mot de passe</button>
+    {{ form_end(form) }}
+    {{ form_errors(form) }}
+
+    {# {{ form_start(userForm) }} #}
+    
+
+ {# {{ form_row(userForm.email) }}
+{{ form_row(userForm.userProfil.firstName) }}
+{{ form_row(userForm.userProfil.lastName) }}
+{{ form_row(userForm.userProfil.phone) }}
+{{ form_row(userForm.userProfil.adress) }}
+{{ form_row(userForm.userProfil.dateOfBirth) }}
+{{ form_row(userForm.userProfil.bio) }}
+
+
+    <button type="submit" class="btn btn-primary">Modifier my profile</button>
+    {{ form_end(userForm) }} #}
+{% endblock %}

@@ -8,14 +8,23 @@
 			<a href="">PLANNING</a>
 		</li>
 
-		<li class="logo"><img src="{{ asset('/logo/logo_ring_side 1.png') }}" alt=""></li>
+		<li class="logo"><img src="{{ asset('/logo/logoringside.png') }}" alt=""></li>
 		<li>
 			<a href="">TARIF</a>
 		</li>
 		<li>
-			<a href="{{path('login')}}">
+		{% if app.user %}
+			<a href="">
+			<button class="button">MON COMPTE</button>
+			<button class="button">SE DECONECTER</button>
+			</a>
+			{% else %}<a href="{{path('login')}}">
 				<button class="button">SE CONNECTER</button>
 			</a>
+			
+		{% endif %}
+			
+			
 		</li>
 	</ul>
 

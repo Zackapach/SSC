@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-a{
+nav a{
     text-decoration: none;
     color: white;
 }
@@ -17,7 +17,7 @@ a{
        border: none;
        margin: 16px 0px;
        cursor: pointer;
-    }
+}
 
 nav .menu{
     height: 100px;
@@ -50,14 +50,15 @@ nav a:hover{
 .hero{
     background-image: url(../img/2-Slider-Grec_Nico-1920x800-11.png);
     width: 100%;
-    height: 900px;
-    background-size: contain;
+    height: 700px;
+    background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     color: white;
+    border-bottom: red solid 5px;
     
 }
 h1{
@@ -75,3 +76,218 @@ border-radius: 20px;
 width: 100px;
 
 }
+header .button:hover{
+background-color: red;
+color: white;
+}
+.concept{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 700px;
+
+    
+}
+
+.main-block{
+    display: flex;
+    justify-content: space-between;
+    width: 1300px;
+}
+
+.left, .right{
+height:300px ;
+width: 550px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+
+
+.section-title{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+   
+}
+
+.section-title h2{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-top: 2px;
+    
+}
+.blue{
+    background-color: blue;
+}
+
+
+.redLine{
+    border: none;
+    /* border-bottom: 5px solid red; */
+    width: 350px;
+    height: 3px;
+    background-color: red;
+    margin-bottom: 2px;
+    
+}
+.grandLine{
+    border: none;
+    /* border-bottom: 5px solid red; */
+    width: 250px;
+    height: 3px;
+    background-color: red;
+    margin-bottom: 2px;
+    
+}
+.black-block{
+    background-color: black;
+    color: white;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.program{
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+}
+.discipline{
+    background-image: url(../img/boxeur.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 40%;
+    height: 1550px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 100px;
+
+    
+}
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 40px 40px;
+        grid-auto-flow: row;
+
+          
+}
+.blackbarre{
+    height: 50px;
+    width: 355px;
+    /* background-color: ; */
+}
+.boxe-anglaise{
+background-image:url(../img/boxeAnglaise.png);
+background-size: cover;
+height: 270px;
+width: 355px;
+background-repeat: no-repeat;
+
+}
+.mma{
+    background-image:url(../img/mma.png);
+    background-size: cover;
+    height: 270px;
+    width: 355px;
+    background-repeat: no-repeat;
+}
+.lutte{
+    background-image:url(../img/lutte.png);
+    background-size: cover;
+    height: 270px;
+    width: 355px;
+    background-repeat: no-repeat;
+}
+.kids{
+    background-image:url(../img/kids.png);
+    background-size: cover;
+    height: 270px;
+    width: 355px;
+    background-repeat: no-repeat;
+}
+.muay-thai{
+    background-image:url(../img/muayThai.png);
+    background-size: cover;
+    height: 270px;
+    width: 355px;
+    background-repeat: no-repeat;
+}
+.grappling{
+    background-image:url(../img/grappling.png);
+    background-size: cover;
+    height: 270px;
+    width: 355px;
+    background-repeat: no-repeat;
+}
+.rs-boxing{
+    background-image:url(../img/rsBoxing.png);
+    background-size: cover;
+    height: 270px;
+    width: 355px;
+    background-repeat: no-repeat;
+}
+.crossfit{
+    background-image:url(../img/crossFit.png);
+    background-size: cover;
+    height: 270px;
+    width: 355px;
+    background-repeat: no-repeat;
+}
+.piyo{
+    background-image:url(../img/piyo.png);
+    background-size: cover;
+    height: 270px;
+    width: 355px;
+    background-repeat: no-repeat;
+}
+
+
+.seemore{
+   margin-bottom: 0;
+}
+/* .program{
+
+} */
+.planning{
+background-image: url(../img/fondrouge.png );
+height: 700px;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+justify-content: space-around;
+}
+
+.planning .grandLine{
+    border: none;
+    /* border-bottom: 5px solid red; */
+    width: 250px;
+    height: 3px;
+    background-color: white;
+    margin-bottom: 2px;
+    
+}
+
+.contact-form-style{
+    border-radius: 5px;
+    border: none;
+    padding-left: 30px;
+    height:50px;
+    width:260px ;
+
+}
+/* 
+article .contact-form{
+    display: flex;
+
+} */
