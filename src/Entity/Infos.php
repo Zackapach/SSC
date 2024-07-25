@@ -18,7 +18,7 @@ class Infos
     private ?User $user = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $clé = null;
+    private ?string $clef = null;
 
     #[ORM\Column(length: 255)]
     private ?string $valeur = null;
@@ -40,14 +40,14 @@ class Infos
         return $this;
     }
 
-    public function getClé(): ?string
+    public function getClef(): ?string
     {
-        return $this->clé;
+        return $this->clef;
     }
 
-    public function setClé(string $clé): static
+    public function setClef(string $clef): static
     {
-        $this->clé = $clé;
+        $this->clef = $clef;
 
         return $this;
     }

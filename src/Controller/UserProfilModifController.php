@@ -71,7 +71,7 @@ class UserProfilModifController extends AbstractController
     #[Route('/{id}', name: 'app_user_profil_modif_delete', methods: ['POST'])]
     public function delete(Request $request, UserProfil $userProfil, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$userProfil->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $userProfil->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($userProfil);
             $entityManager->flush();
         }

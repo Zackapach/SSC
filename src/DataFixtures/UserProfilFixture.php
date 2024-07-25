@@ -10,7 +10,7 @@ class UserProfilFixture extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        for ($i=0; $i < 3 ; $i++) { 
+        for ($i = 0; $i < 3; $i++) {
             # code...
                 $userProfil = new UserProfil();
                 $userProfil
@@ -22,9 +22,9 @@ class UserProfilFixture extends Fixture
                 ->setBio('Bio for user' . $i)
                 ->setUser($this->getReference('user_' . $i));
                 ;
-                
+
                 $manager->persist($userProfil);
-           }
+        }
 
         $manager->flush();
     }

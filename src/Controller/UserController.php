@@ -15,8 +15,11 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserController extends AbstractController
 {
     #[Route('/user/update', name: 'app_user_update')]
-    public function update(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
-    {
+    public function update(
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        EntityManagerInterface $entityManager
+    ): Response {
         $user = $this->getUser();
         if (!$user) {
             throw $this->createAccessDeniedException('Vous devez être connecté pour accéder à cette page.');
@@ -29,31 +32,30 @@ class UserController extends AbstractController
         $userForm->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            if($userPasswordHasher->isPasswordValid($this->getUser(), 
-                $form->get('currentPassword')->getData())){
-
-           
-            
-            // encode the plain password
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('newPassword')->getData()
+            if (
+                $userPasswordHasher->isPasswordValid(
+                    $this->getUser(),
+                    $form->get('currentPassword')->getData()
                 )
-            );
+            ) {
+            // encode the plain password
+                $user->setPassword(
+                    $userPasswordHasher->hashPassword(
+                        $user,
+                        $form->get('newPassword')->getData()
+                    )
+                );
 
-            $entityManager->persist($user);
-            $entityManager->flush();
+                $entityManager->persist($user);
+                $entityManager->flush();
 
-            $this->addFlash('success', 'Votre mot de passe a été mis à jour avec succès.');
+                $this->addFlash('success', 'Votre mot de passe a été mis à jour avec succès.');
 
-            return $this->redirectToRoute('home');
-         }}
+                return $this->redirectToRoute('home');
+            }
+        }
 
         if ($userForm->isSubmitted() && $userForm->isValid()) {
-            
-
             $entityManager->persist($user);
             $entityManager->flush();
 

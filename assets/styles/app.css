@@ -19,7 +19,8 @@ nav a{
        cursor: pointer;
 }
 
-nav .menu{
+
+nav .nav{
     height: 100px;
     width: 100%;
     background-color: black;
@@ -27,6 +28,8 @@ nav .menu{
     display: flex;
     justify-content: space-around;
     list-style: none;
+    position: relative;
+    
 }
 
 
@@ -46,6 +49,54 @@ nav a:hover{
     transform: scale(1.1);
     transition: transform 600ms, color 400ms;
 }
+
+/* MENU DEROULANT */
+
+nav .menu{
+    background-color: white;
+    width: 250px;
+    position: absolute;
+    right: 5%;
+    top: 105px;
+    border-radius: 15px;
+    color: black;
+    padding: 30px;
+    display: none;
+}
+
+nav .menu a{
+color: black;
+
+
+}
+
+#checkbox-toggle{
+    display: none;
+}
+
+#checkbox-toggle:checked + .menu-button + .menu{
+    display: block;
+}
+
+.menu-button{
+    display: flex;
+    align-items: centercomposer;
+}
+
+
+
+.menu .clip-path{
+    width: 16px;
+    height: 8px;
+    background-color: white;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    position: absolute;
+    top: -7px;
+    right: 73px;
+    
+}
+
+
 
 .hero{
     background-image: url(../img/2-Slider-Grec_Nico-1920x800-11.png);
@@ -108,38 +159,42 @@ justify-content: space-between;
 
 .section-title{
     display: flex;
+    justify-content: space-around;
     align-items: center;
     gap: 10px;
+    background-image: url(../img/fondrouge.png);
    
 }
 
 .section-title h2{
     display: flex;
+    
     text-align: center;
     align-items: center;
     margin-top: 2px;
     
 }
 .blue{
-    background-color: blue;
+    background-color: yellow;
+    display: flex;
 }
 
 
-.redLine{
+.redLine .section-planning{
     border: none;
     /* border-bottom: 5px solid red; */
     width: 350px;
     height: 3px;
-    background-color: red;
+    background-color: blue;
     margin-bottom: 2px;
     
 }
-.grandLine{
+.grandLine .section-planning{
     border: none;
     /* border-bottom: 5px solid red; */
     width: 250px;
     height: 3px;
-    background-color: red;
+    background-color: blue;
     margin-bottom: 2px;
     
 }
@@ -182,16 +237,31 @@ justify-content: space-between;
           
 }
 .blackbarre{
-    height: 50px;
+    height: 90px;
     width: 355px;
-    /* background-color: ; */
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items:center;
+   
 }
+.blackbarre h6{
+  
+    color: white;
+    font-size: 14px;
+     
+}
+
+
 .boxe-anglaise{
 background-image:url(../img/boxeAnglaise.png);
 background-size: cover;
 height: 270px;
 width: 355px;
 background-repeat: no-repeat;
+display: flex;
+align-items: flex-end;
+position: relative;
 
 }
 .mma{
@@ -200,6 +270,9 @@ background-repeat: no-repeat;
     height: 270px;
     width: 355px;
     background-repeat: no-repeat;
+    display: flex;
+align-items: flex-end;
+position: relative;
 }
 .lutte{
     background-image:url(../img/lutte.png);
@@ -207,6 +280,9 @@ background-repeat: no-repeat;
     height: 270px;
     width: 355px;
     background-repeat: no-repeat;
+    display: flex;
+align-items: flex-end;
+position: relative;
 }
 .kids{
     background-image:url(../img/kids.png);
@@ -214,6 +290,9 @@ background-repeat: no-repeat;
     height: 270px;
     width: 355px;
     background-repeat: no-repeat;
+    display: flex;
+align-items: flex-end;
+position: relative;
 }
 .muay-thai{
     background-image:url(../img/muayThai.png);
@@ -221,6 +300,9 @@ background-repeat: no-repeat;
     height: 270px;
     width: 355px;
     background-repeat: no-repeat;
+    display: flex;
+align-items: flex-end;
+position: relative;
 }
 .grappling{
     background-image:url(../img/grappling.png);
@@ -228,6 +310,9 @@ background-repeat: no-repeat;
     height: 270px;
     width: 355px;
     background-repeat: no-repeat;
+    display: flex;
+align-items: flex-end;
+position: relative;
 }
 .rs-boxing{
     background-image:url(../img/rsBoxing.png);
@@ -235,6 +320,9 @@ background-repeat: no-repeat;
     height: 270px;
     width: 355px;
     background-repeat: no-repeat;
+    display: flex;
+align-items: flex-end;
+position: relative;
 }
 .crossfit{
     background-image:url(../img/crossFit.png);
@@ -242,6 +330,9 @@ background-repeat: no-repeat;
     height: 270px;
     width: 355px;
     background-repeat: no-repeat;
+    display: flex;
+align-items: flex-end;
+position: relative;
 }
 .piyo{
     background-image:url(../img/piyo.png);
@@ -249,6 +340,9 @@ background-repeat: no-repeat;
     height: 270px;
     width: 355px;
     background-repeat: no-repeat;
+    display: flex;
+align-items: flex-end;
+position: relative;
 }
 
 
@@ -258,7 +352,7 @@ background-repeat: no-repeat;
 /* .program{
 
 } */
-.planning{
+.planning {
 background-image: url(../img/fondrouge.png );
 height: 700px;
 width: 100%;

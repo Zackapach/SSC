@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Form;
 
@@ -18,46 +18,46 @@ class ContactType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'label' => false,
-                'attr'=>[
-                    'class' =>'contact-form-style',
+                'attr' => [
+                    'class' => 'contact-form-style',
                     'placeholder' => 'Poutine'
-                ] 
+                ]
             ])
             ->add('prenom', TextType::class, [
                 'label' => false,
-                'attr'=>[
-                    'class' =>'contact-form-style',
+                'attr' => [
+                    'class' => 'contact-form-style',
                     'placeholder' => 'Vladir'
-                ] 
+                ]
             ])
             ->add('email', EmailType::class, [
                 'label' => false,
-                'attr'=>[
-                    'class' =>'contact-form-style',
+                'attr' => [
+                    'class' => 'contact-form-style',
                     'placeholder' => 'Vladounet@gmail.com'
-                ] 
+                ]
             ])
             ->add('telephone', TelType::class, [
                 'label' => false,
-                'attr'=>[
-                    'class' =>'contact-form-style',
+                'attr' => [
+                    'class' => 'contact-form-style',
                     'placeholder' => '00123456789'
-                ] 
+                ]
             ])
             ->add('texte', TextareaType::class, [
                 'label' => false,
-                'attr'=>[
-                    'class' =>'',
+                'attr' => [
+                    'class' => '',
                     'placeholder' => "Salut c'est vla revener en ukraine je vous atomise bande de  "
                 ]
             ])
 
             ->add('submit', SubmitType::class, [
                 'label' => 'Send',
-                'attr'=>[
-                    'class' =>'',
-                    
-                ] 
+                'attr' => [
+                    'class' => '',
+
+                ]
             ]);
     }
 

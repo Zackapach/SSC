@@ -22,7 +22,7 @@ class UserProfilType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('bio')
-            
+
         ;
     }
 

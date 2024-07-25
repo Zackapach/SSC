@@ -15,27 +15,24 @@ class UserFixture extends Fixture
     {
         $this->userPasswordHasher = $userPasswordHasher;
     }
-    public function load(ObjectManager $manager ): void
+    public function load(ObjectManager $manager): void
     {
-       for ($i=0; $i < 3 ; $i++) { 
-        # code...
+        for ($i = 0; $i < 3; $i++) {
+         # code...
             $user = new User();
             $user
-            ->setEmail('mail'. $i . '@mail.com')
+            ->setEmail('mail' . $i . '@mail.com')
             ->setPassword($this->userPasswordHasher->hashPassword(
                 $user,
                 'password'
             ))
-            ->setIsVerified(true);
+             ->setIsVerified(true);
 
-            $this->addReference('user_'. $i, $user);
-            
-            $manager->persist($user);
-       }
+             $this->addReference('user_' . $i, $user);
+
+             $manager->persist($user);
+        }
 
         $manager->flush();
-        
     }
-    
 }
- 
