@@ -4,9 +4,12 @@
 }
 
 /* START BARRE DE NAVIGATION  */
+a{
+  text-decoration: none;
+}
 
 nav a {
-  text-decoration: none;
+ 
   color: white;
 }
 
@@ -141,6 +144,15 @@ header .button:hover {
   width: 1300px;
 }
 
+.black-block {
+  background-color: black;
+  color: white;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .left,
 .right {
   height: 300px;
@@ -234,7 +246,16 @@ header .button:hover {
 }
 .blackbarre h6 {
   color: white;
-  font-size: 14px;
+  font-size:18px;
+}
+.blackbarre:hover {
+ /* background-color: rgba(183, 0, 0, 0.7); */
+ background-color: red;
+}
+.blackbarre:hover h6 {
+  color: black;
+  /* font-size: 20px; */
+
 }
 
 .boxe-anglaise {
@@ -269,66 +290,112 @@ header .button:hover {
 
 /* START SECTION PLANNING */
 
-.section-title {
+.section-planning {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
+  /* height: 700px; */
+  gap: 100px;
+  padding: 40px;
   background-image: url(../img/fondrouge.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.section-planning-title{
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 .section-planning .redLine {
-  border: none;
-  /* border-bottom: 5px solid red; */
-  width: 350px;
-  height: 3px;
-  background-color: blue;
-  margin-bottom: 2px;
-}
-.grandLine .section-planning {
-  border: none;
-  /* border-bottom: 5px solid red; */
-  width: 250px;
-  height: 3px;
-  background-color: blue;
-  margin-bottom: 2px;
-}
-
-.blue {
-  background-color: black;
-  display: flex;
-}
-
-.black-block {
-  background-color: black;
-  color: white;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.planning {
-  background-image: url(../img/fondrouge.png);
-  height: 700px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.planning .grandLine {
-  border: none;
-  /* border-bottom: 5px solid red; */
-  width: 250px;
-  height: 3px;
+  border-color: white;
   background-color: white;
-  margin-bottom: 2px;
+ 
 }
+
+.section-planning img{
+  border-radius: 15px;
+}
+
+
 
 /*************************** END SECTION PLANNING  **********************************/
 
 /************************** START SECTION CONTACT  **********************************/
+
+
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #333;
+}
+
+.form-container, .map-container {
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+}
+h4{
+  color: white;
+  font-size: 50px;
+}
+.info-container {
+  background-color: white;
+  height: 480px ;
+  width: 355px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 50px;
+  box-sizing: border-box;
+
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input, .input-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+ 
+  color: #fff;
+}
+
+.contact button {
+  padding: 10px 20px;
+  background-color: #e60000;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.contact button:hover {
+  background-color: #cc0000;
+}
+
+.horaires, .coordonnees {
+ /* padding: 30px; */
+ width: 100px;
+}
+
+h5{
+  color: red;
+}
 
 .contact-form-style {
   border-radius: 5px;
@@ -337,10 +404,11 @@ header .button:hover {
   height: 50px;
   width: 260px;
 }
-/* 
-article .contact-form{
-    display: flex;
 
-} */
+.map-container iframe {
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+}
 
 /************************** END SECTION CONTACT **********************************/
