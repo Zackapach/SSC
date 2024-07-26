@@ -1,387 +1,346 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-nav a{
-    text-decoration: none;
-    color: white;
+/* START BARRE DE NAVIGATION  */
+
+nav a {
+  text-decoration: none;
+  color: white;
 }
 
-.button{
-    background-color: red;
-       border-radius: 10px;
-       width: 130px;
-       height: 30px;
-       color: white;
-       border: none;
-       margin: 16px 0px;
-       cursor: pointer;
+.button {
+  background-color: red;
+  border-radius: 10px;
+  width: 130px;
+  height: 30px;
+  color: white;
+  border: none;
+  margin: 16px 0px;
+  cursor: pointer;
 }
 
-
-nav .nav{
-    height: 100px;
-    width: 100%;
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    position: relative;
-    
+nav .nav {
+  height: 100px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  position: relative;
 }
 
-
-nav li{
-    display: flex;
-    align-items: center;
+nav li {
+  display: flex;
+  align-items: center;
 }
-nav a{
-    height: 36px;
-    display: flex;
-    align-items: center;
-    transition: color 200ms, transform 1000ms;
-}
-
-nav a:hover{
-    color: red;
-    transform: scale(1.1);
-    transition: transform 600ms, color 400ms;
+nav a {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  transition: color 200ms, transform 1000ms;
 }
 
-/* MENU DEROULANT */
-
-nav .menu{
-    background-color: white;
-    width: 250px;
-    position: absolute;
-    right: 5%;
-    top: 105px;
-    border-radius: 15px;
-    color: black;
-    padding: 30px;
-    display: none;
+nav a:hover {
+  color: red;
+  transform: scale(1.1);
+  transition: transform 600ms, color 400ms;
 }
 
-nav .menu a{
-color: black;
+/* START MENU DEROULANT */
 
-
+nav .menu {
+  background-color: white;
+  width: 250px;
+  position: absolute;
+  right: 5%;
+  top: 105px;
+  border-radius: 15px;
+  color: black;
+  padding: 30px;
+  display: none;
 }
 
-#checkbox-toggle{
-    display: none;
+nav .menu a {
+  color: black;
 }
 
-#checkbox-toggle:checked + .menu-button + .menu{
-    display: block;
+#checkbox-toggle {
+  display: none;
 }
 
-.menu-button{
-    display: flex;
-    align-items: centercomposer;
+#checkbox-toggle:checked + .menu-button + .menu {
+  display: block;
 }
 
-
-
-.menu .clip-path{
-    width: 16px;
-    height: 8px;
-    background-color: white;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    position: absolute;
-    top: -7px;
-    right: 73px;
-    
+.menu-button {
+  display: flex;
+  align-items: centercomposer;
 }
 
-
-
-.hero{
-    background-image: url(../img/2-Slider-Grec_Nico-1920x800-11.png);
-    width: 100%;
-    height: 700px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: white;
-    border-bottom: red solid 5px;
-    
+.menu .clip-path {
+  width: 16px;
+  height: 8px;
+  background-color: white;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  position: absolute;
+  top: -7px;
+  right: 73px;
 }
-h1{
-    text-align: center;
-    font-size: 78px;
-    width: 610px;
-    
+
+/* END MENU DEROULANT */
+
+/* START HEADER */
+.hero {
+  background-image: url(../img/2-Slider-Grec_Nico-1920x800-11.png);
+  width: 100%;
+  height: 700px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  border-bottom: red solid 5px;
+}
+h1 {
+  text-align: center;
+  font-size: 78px;
+  width: 610px;
 }
 
 .hero .button {
-background-color: white;
-color: black;
-border-radius: 20px;
+  background-color: white;
+  color: black;
+  border-radius: 20px;
 
-width: 100px;
-
+  width: 100px;
 }
-header .button:hover{
-background-color: red;
-color: white;
-}
-.concept{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    height: 700px;
-
-    
+header .button:hover {
+  background-color: red;
+  color: white;
 }
 
-.main-block{
-    display: flex;
-    justify-content: space-between;
-    width: 1300px;
+/********************** END HEADER *********************************/
+
+/****************** START SECTION CONCEPT  **********************/
+.concept {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 700px;
 }
 
-.left, .right{
-height:300px ;
-width: 550px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
+.main-block {
+  display: flex;
+  justify-content: space-between;
+  width: 1300px;
 }
 
-
-
-.section-title{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 10px;
-    background-image: url(../img/fondrouge.png);
-   
+.left,
+.right {
+  height: 300px;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.section-title h2{
-    display: flex;
-    
-    text-align: center;
-    align-items: center;
-    margin-top: 2px;
-    
-}
-.blue{
-    background-color: yellow;
-    display: flex;
+.section-title-concept {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
 }
 
+.section-title-concept h2 {
+  display: flex;
 
-.redLine .section-planning{
-    border: none;
-    /* border-bottom: 5px solid red; */
-    width: 350px;
-    height: 3px;
-    background-color: blue;
-    margin-bottom: 2px;
-    
+  text-align: center;
+  align-items: center;
+  margin-top: 2px;
 }
-.grandLine .section-planning{
-    border: none;
-    /* border-bottom: 5px solid red; */
-    width: 250px;
-    height: 3px;
-    background-color: blue;
-    margin-bottom: 2px;
-    
-}
-.black-block{
-    background-color: black;
-    color: white;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-}
-.program{
-    display: flex;
-    justify-content: space-between;
-    width: 1200px;
-}
-.discipline{
-    background-image: url(../img/boxeur.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-x: 40%;
-    height: 1550px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 100px;
-
-    
-}
-.grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        gap: 40px 40px;
-        grid-auto-flow: row;
-
-          
-}
-.blackbarre{
-    height: 90px;
-    width: 355px;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items:center;
-   
-}
-.blackbarre h6{
-  
-    color: white;
-    font-size: 14px;
-     
+.redLine {
+  border: none;
+  border-bottom: 5px solid red;
+  width: 350px;
+  height: 3px;
+  margin-bottom: 2px;
 }
 
-
-.boxe-anglaise{
-background-image:url(../img/boxeAnglaise.png);
-background-size: cover;
-height: 270px;
-width: 355px;
-background-repeat: no-repeat;
-display: flex;
-align-items: flex-end;
-position: relative;
-
-}
-.mma{
-    background-image:url(../img/mma.png);
-    background-size: cover;
-    height: 270px;
-    width: 355px;
-    background-repeat: no-repeat;
-    display: flex;
-align-items: flex-end;
-position: relative;
-}
-.lutte{
-    background-image:url(../img/lutte.png);
-    background-size: cover;
-    height: 270px;
-    width: 355px;
-    background-repeat: no-repeat;
-    display: flex;
-align-items: flex-end;
-position: relative;
-}
-.kids{
-    background-image:url(../img/kids.png);
-    background-size: cover;
-    height: 270px;
-    width: 355px;
-    background-repeat: no-repeat;
-    display: flex;
-align-items: flex-end;
-position: relative;
-}
-.muay-thai{
-    background-image:url(../img/muayThai.png);
-    background-size: cover;
-    height: 270px;
-    width: 355px;
-    background-repeat: no-repeat;
-    display: flex;
-align-items: flex-end;
-position: relative;
-}
-.grappling{
-    background-image:url(../img/grappling.png);
-    background-size: cover;
-    height: 270px;
-    width: 355px;
-    background-repeat: no-repeat;
-    display: flex;
-align-items: flex-end;
-position: relative;
-}
-.rs-boxing{
-    background-image:url(../img/rsBoxing.png);
-    background-size: cover;
-    height: 270px;
-    width: 355px;
-    background-repeat: no-repeat;
-    display: flex;
-align-items: flex-end;
-position: relative;
-}
-.crossfit{
-    background-image:url(../img/crossFit.png);
-    background-size: cover;
-    height: 270px;
-    width: 355px;
-    background-repeat: no-repeat;
-    display: flex;
-align-items: flex-end;
-position: relative;
-}
-.piyo{
-    background-image:url(../img/piyo.png);
-    background-size: cover;
-    height: 270px;
-    width: 355px;
-    background-repeat: no-repeat;
-    display: flex;
-align-items: flex-end;
-position: relative;
+.program .redLine {
+  width: 250px;
 }
 
-
-.seemore{
-   margin-bottom: 0;
+.program {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
 }
-/* .program{
 
-} */
+/* END SECTION CONCEPT  */
+
+/* START SECTION DISCIPLINE */
+
+.discipline {
+  background-image: url(../img/boxeur.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: 40%;
+  height: 1450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 100px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 40px 40px;
+  grid-auto-flow: row;
+}
+
+.grid div {
+  border-radius: 10px;
+  background-size: cover;
+  height: 270px;
+  width: 355px;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.grid span {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  clip-path: polygon(0% 35%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.blackbarre {
+  height: 100px;
+  width: 355px;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blackbarre h6 {
+  color: white;
+  font-size: 14px;
+}
+
+.boxe-anglaise {
+  background-image: url(../img/boxeAnglaise.png);
+}
+.mma {
+  background-image: url(../img/mma.png);
+}
+.lutte {
+  background-image: url(../img/lutte.png);
+}
+.kids {
+  background-image: url(../img/kids.png);
+}
+.muay-thai {
+  background-image: url(../img/muayThai.png);
+}
+.grappling {
+  background-image: url(../img/grappling.png);
+}
+.rs-boxing {
+  background-image: url(../img/rsBoxing.png);
+}
+.crossfit {
+  background-image: url(../img/crossFit.png);
+}
+.piyo {
+  background-image: url(../img/piyo.png);
+}
+
+/* END SECTION DISCIPLINE */
+
+/* START SECTION PLANNING */
+
+.section-title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  background-image: url(../img/fondrouge.png);
+}
+.section-planning .redLine {
+  border: none;
+  /* border-bottom: 5px solid red; */
+  width: 350px;
+  height: 3px;
+  background-color: blue;
+  margin-bottom: 2px;
+}
+.grandLine .section-planning {
+  border: none;
+  /* border-bottom: 5px solid red; */
+  width: 250px;
+  height: 3px;
+  background-color: blue;
+  margin-bottom: 2px;
+}
+
+.blue {
+  background-color: black;
+  display: flex;
+}
+
+.black-block {
+  background-color: black;
+  color: white;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .planning {
-background-image: url(../img/fondrouge.png );
-height: 700px;
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-justify-content: space-around;
+  background-image: url(../img/fondrouge.png);
+  height: 700px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.planning .grandLine{
-    border: none;
-    /* border-bottom: 5px solid red; */
-    width: 250px;
-    height: 3px;
-    background-color: white;
-    margin-bottom: 2px;
-    
+.planning .grandLine {
+  border: none;
+  /* border-bottom: 5px solid red; */
+  width: 250px;
+  height: 3px;
+  background-color: white;
+  margin-bottom: 2px;
 }
 
-.contact-form-style{
-    border-radius: 5px;
-    border: none;
-    padding-left: 30px;
-    height:50px;
-    width:260px ;
+/*************************** END SECTION PLANNING  **********************************/
 
+/************************** START SECTION CONTACT  **********************************/
+
+.contact-form-style {
+  border-radius: 5px;
+  border: none;
+  padding-left: 30px;
+  height: 50px;
+  width: 260px;
 }
 /* 
 article .contact-form{
     display: flex;
 
 } */
+
+/************************** END SECTION CONTACT **********************************/

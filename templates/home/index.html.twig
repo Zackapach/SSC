@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}HomeController
+{% block title %}Acceuil
 {% endblock %}
 
 {% block body %}
@@ -9,8 +9,9 @@
 	<header>
 		<div class="hero">
 
-			<h1>Votre salle d'entrainement</h1>
-			<a href="">
+			<h1 id="tyfytdy">Votre salle d'entrainement</h1>
+
+			<a href="{{path('app_register')}}">
 				<button class="button">s'inscrire</button>
 			</a>
 		</div>
@@ -21,9 +22,8 @@
 		<section class="concept">
 			<div class="main-block">
 
-
 				<article class="left">
-					<div class="section-title">
+					<div class="section-title-concept">
 						<h2>CONCEPT
 						</h2>
 						<div class="redLine"></div>
@@ -39,7 +39,7 @@
 				</article>
 
 				<article class="right">
-					<div class="section-title">
+					<div class="section-title-concept">
 						<h2>LIBRE ACCES</h2>
 						<div class="redLine"></div>
 					</div>
@@ -53,17 +53,17 @@
 				</article>
 
 			</div>
-			<div class="program">
+			<article class="program">
 
 				<h3>45 COURS PAR SEMAINE</h3>
-				<div class="grandLine"></div>
+				<div class="redLine"></div>
 
 				<h3>10 DISCIPLINE</h3>
 				{# <div class="redLine"></div> #}
-				<hr class="grandLine">
+				<hr class="redLine">
 
 				<h3>3 ZONE D'ENTRAINEMENT</h3>
-			</div>
+			</article>
 		</section>
 
 
@@ -74,37 +74,52 @@
 		<h4>DISCIPLINE</h4>
 		<article class="grid">
 			<div class="boxe-anglaise">
-				<div class="blackbarre"><h6>BOXE ANGLAISE</h6></div>
+				<span class="blackbarre">
+					<h6>BOXE ANGLAISE</h6>
+				</span>
 			</div>
 			<div class="mma">
-				<div class="blackbarre"><h6>MMA</h6></div>
+				<span class="blackbarre">
+					<h6>MMA</h6>
+				</span>
 			</div>
 			<div class="lutte">
-				<div class="blackbarre"><h6>LUTTE</h6></div>
+				<span class="blackbarre">
+					<h6>LUTTE</h6>
+				</span>
 			</div>
 			<div class="kids">
-				<div class="blackbarre"><h6>KIDS & ADOS</h6></div>
+				<span class="blackbarre">
+					<h6>KIDS & ADOS</h6>
+				</span>
 			</div>
 			<div class="muay-thai">
-				<div class="blackbarre"><h6>MUAY THAÏ</h6></div>
+				<span class="blackbarre">
+					<h6>MUAY THAÏ</h6>
+				</span>
 			</div>
 			<div class="grappling">
-				<div class="blackbarre"><h6>GRAPPLING</h6></div>
+				<span class="blackbarre">
+					<h6>GRAPPLING</h6>
+				</span>
 			</div>
 			<div class="rs-boxing">
-				<div class="blackbarre"><h6>RS BOXING</h6></div>
+				<span class="blackbarre">
+					<h6>RS BOXING</h6>
+				</span>
 			</div>
 			<div class="crossfit">
-				<div class="blackbarre"><h6>CROSS FIT</h6></div>
+				<span class="blackbarre">
+					<h6>CROSS FIT</h6>
+				</span>
 			</div>
 			<div class="piyo">
-				<div class="blackbarre"><h6>PIYO</h6></div>
+				<span class="blackbarre">
+					<h6>PIYO</h6>
+				</span>
 			</div>
 		</article>
 
-		<a href="" class="seemore">
-			<button>VOIR PLUS</button>
-		</a>
 	</section>
 
 
@@ -126,7 +141,7 @@
 
 	<div class="container">
 		<div class="form-container">
-			<article class="section-title">
+			<article class="section-title-contact">
 				<h4>RINGSIDE</h4>
 				<hr class="grandLine"></article>
 			<article>
