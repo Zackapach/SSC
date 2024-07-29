@@ -49,7 +49,7 @@ class EmailVerifier
             $user->getEmail()
         );
 
-        $user->setVerified(true);
+        $user->setIsVerified(true);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();

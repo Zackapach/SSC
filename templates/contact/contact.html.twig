@@ -1,15 +1,19 @@
 <section class="contact-form">
 	{{ form_start(contactForm) }}
-	<article>
+	<article class="form-group">
 		{{ form_row(contactForm.nom) }}
 		{{ form_row(contactForm.prenom) }}
 	</article>
-	<article>
+
+	<article class="form-group">
 		{{ form_row(contactForm.email) }}
 		{{ form_row(contactForm.telephone) }}
 	</article>
+
 	<div class="text-contact">{{ form_row(contactForm.texte) }}</div>
+	<div class="submit-button">
 	{{ form_row(contactForm.submit) }}
+	</div>
 	{{ form_end(contactForm) }}
 </section>
  

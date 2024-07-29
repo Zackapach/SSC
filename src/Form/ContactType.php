@@ -19,43 +19,43 @@ class ContactType extends AbstractType
             ->add('nom', TextType::class, [
                 'label' => false,
                 'attr' => [
-                    'class' => 'contact-form-style',
+                    'class' => 'form-control',
                     'placeholder' => 'Poutine'
                 ]
             ])
             ->add('prenom', TextType::class, [
                 'label' => false,
                 'attr' => [
-                    'class' => 'contact-form-style',
+                    'class' => 'form-control',
                     'placeholder' => 'Vladir'
                 ]
             ])
             ->add('email', EmailType::class, [
                 'label' => false,
                 'attr' => [
-                    'class' => 'contact-form-style',
+                    'class' => 'form-control',
                     'placeholder' => 'Vladounet@gmail.com'
                 ]
             ])
             ->add('telephone', TelType::class, [
                 'label' => false,
                 'attr' => [
-                    'class' => 'contact-form-style',
+                    'class' => 'form-control',
                     'placeholder' => '00123456789'
                 ]
             ])
             ->add('texte', TextareaType::class, [
                 'label' => false,
                 'attr' => [
-                    'class' => '',
-                    'placeholder' => "Salut c'est vla revener en ukraine je vous atomise bande de  "
+                    'class' => 'form-control form-textarea',
+                    'placeholder' => ""
                 ]
             ])
 
             ->add('submit', SubmitType::class, [
-                'label' => 'Send',
+                'label' => 'Envoyer',
                 'attr' => [
-                    'class' => '',
+                    'class' => 'form-control form-submit',
 
                 ]
             ]);

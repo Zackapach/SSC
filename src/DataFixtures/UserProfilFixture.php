@@ -5,8 +5,9 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\UserProfil;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class UserProfilFixture extends Fixture
+class UserProfilFixture extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -28,7 +29,7 @@ class UserProfilFixture extends Fixture
 
         $manager->flush();
     }
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             UserFixture::class,

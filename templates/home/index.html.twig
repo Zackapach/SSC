@@ -4,15 +4,13 @@
 {% endblock %}
 
 {% block body %}
-	<style></style>
-
 	<header>
 		<div class="hero">
 
-			<h1 id="tyfytdy">Votre salle d'entrainement</h1>
+			<h1>Votre salle d'entrainement</h1>
 
 			<a href="{{path('app_register')}}">
-				<button class="button">s'inscrire</button>
+				<button class="button">S'inscrire</button>
 			</a>
 		</div>
 	</header>
@@ -53,147 +51,146 @@
 				</article>
 
 			</div>
+
 			<article class="program">
 
 				<h3>45 COURS PAR SEMAINE</h3>
 				<div class="redLine"></div>
 
 				<h3>10 DISCIPLINE</h3>
-				{# <div class="redLine"></div> #}
-				<hr class="redLine">
+				<div class="redLine"></div>
+
 
 				<h3>3 ZONE D'ENTRAINEMENT</h3>
 			</article>
 		</section>
 
 
-	</div>
-
-
-	<section class="discipline">
-		<h4>DISCIPLINE</h4>
-		<article class="grid">
-			<div class="boxe-anglaise">
-				<span class="blackbarre">
-					<h6>BOXE ANGLAISE</h6>
-				</span>
-			</div>
-			<div class="mma">
-				<a href="">
+		<section class="discipline">
+			<h4>DISCIPLINE</h4>
+			<article class="grid">
+				<div class="boxe-anglaise">
 					<span class="blackbarre">
-						<h6>MMA</h6>
+						<h6>BOXE ANGLAISE</h6>
 					</span>
-				</a>
-			</div>
-			<div class="lutte">
-				<span class="blackbarre">
-					<h6>LUTTE</h6>
-				</span>
-			</div>
-			<div class="kids">
-				<span class="blackbarre">
-					<h6>KIDS & ADOS</h6>
-				</span>
-			</div>
-			<div class="muay-thai">
-				<span class="blackbarre">
-					<h6>MUAY THAÏ</h6>
-				</span>
-			</div>
-			<div class="grappling">
-				<span class="blackbarre">
-					<h6>GRAPPLING</h6>
-				</span>
-			</div>
-			<div class="rs-boxing">
-				<span class="blackbarre">
-					<h6>RS BOXING</h6>
-				</span>
-			</div>
-			<div class="crossfit">
-				<span class="blackbarre">
-					<h6>CROSS FIT</h6>
-				</span>
-			</div>
-			<div class="piyo">
-				<span class="blackbarre">
-					<h6>PIYO</h6>
-				</span>
-			</div>
+				</div>
+				<div class="mma">
+					<a href="">
+						<span class="blackbarre">
+							<h6>MMA</h6>
+						</span>
+					</a>
+				</div>
+				<div class="lutte">
+					<span class="blackbarre">
+						<h6>LUTTE</h6>
+					</span>
+				</div>
+				<div class="kids">
+					<span class="blackbarre">
+						<h6>KIDS & ADOS</h6>
+					</span>
+				</div>
+				<div class="muay-thai">
+					<span class="blackbarre">
+						<h6>MUAY THAÏ</h6>
+					</span>
+				</div>
+				<div class="grappling">
+					<span class="blackbarre">
+						<h6>GRAPPLING</h6>
+					</span>
+				</div>
+				<div class="rs-boxing">
+					<span class="blackbarre">
+						<h6>RS BOXING</h6>
+					</span>
+				</div>
+				<div class="crossfit">
+					<span class="blackbarre">
+						<h6>CROSS FIT</h6>
+					</span>
+				</div>
+				<div class="piyo">
+					<span class="blackbarre">
+						<h6>PIYO</h6>
+					</span>
+				</div>
+			</article>
+
+		</section>
+
+
+	</section>
+
+	<section class="section-planning">
+
+
+		<article class="section-planning-title">
+			<h4>Planning</h4>
+			<hr class="redLine">
+		</article>
+
+		<article class="section-planning-planning">
+
+			<img src="{{asset('img/ringside_planning_2023-2024.png')}}" alt="">
+
 		</article>
 
 	</section>
 
+	<section class="section-contact">
 
-</section>
+		<article class="article-contact">
+			<article class="form-container">
 
-<section class="section-planning">
+				<div class="section-title-contact">
 
+					<h4>RINGSIDE</h4>
+					<hr class="redLine">
 
-	<article class="section-planning-title">
-		<h4>Planning</h4>
-		<hr class="redLine">
-	</article>
+				</div>
 
-	<article class="section-planning-planning">
+				<div>
 
-		<img src="{{asset('img/ringside_planning_2023-2024.png')}}" alt="">
+					{% include 'contact/contact.html.twig' %}
 
-	</article>
-
-</section>
-
-<section class="contact">
+				</div>
 
 
-	<article class="form-container">
-
-		<div class="section-title-contact">
-
-			<h4>RINGSIDE</h4>
-			<hr class="grandLine">
-
-		</div>
-
-		<div>
-
-			{% include 'contact/contact.html.twig' %}
-
-		</div>
+			</article>
 
 
-	</article>
+			<article class="contact-right-side">
 
+				<div class="infos-container">
 
-	<article class="contact-right-side">
+					<div class="horaires">
+						<h5>Horaire</h5>
+						<p>Renseignements, visites et inscriptions :</p>
+						<p>LUNDI AU VENDREDI :</p>
+						<p>10h00 - 14h00</p>
+						<p>17h00 - 20h00</p>
+						<p>SAMEDI :</p>
+						<p>9h30 – 13h00</p>
+					</div>
 
-		<div class="infos-container">
+					<div class="coordonnees">
+						<h5>Coordonnées</h5>
+						<p>ADRESSE</p>
+						<p>12, Chemin des Gorges</p>
+						<p>Bâtiment 28</p>
+						<p>69570 DARDILLY</p>
+					</div>
 
-			<div class="horaires">
-				<h5>Horaire</h5>
-				<p>Renseignements, visites et inscriptions :</p>
-				<p>LUNDI AU VENDREDI :</p>
-				<p>10h00 - 14h00</p>
-				<p>17h00 - 20h00</p>
-				<p>SAMEDI :</p>
-				<p>9h30 – 13h00</p>
-			</div>
+				</div>
 
-			<div class="coordonnees">
-				<h5>Coordonnées</h5>
-				<p>ADRESSE</p>
-				<p>12, Chemin des Gorges</p>
-				<p>Bâtiment 28</p>
-				<p>69570 DARDILLY</p>
-			</div>
+				<div class="map-container">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.429743079799!2d4.803083076724141!3d45.771864371857166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ebfa04f3fafd%3A0x28b8f5e19e805d5c!2s12%20Chemin%20des%20Gorges%2C%2069570%20Dardilly%2C%20France!5e0!3m2!1sen!2sus!4v1626794445555!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+				</div>
 
-		</div>
+			</article>
+		</article>
 
-		<div class="map-container">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.429743079799!2d4.803083076724141!3d45.771864371857166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ebfa04f3fafd%3A0x28b8f5e19e805d5c!2s12%20Chemin%20des%20Gorges%2C%2069570%20Dardilly%2C%20France!5e0!3m2!1sen!2sus!4v1626794445555!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-		</div>
-
-	</article>
-
-
-</section></main>{% endblock %}
+	</section>
+</main>{% endblock %}
