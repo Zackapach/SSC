@@ -20,21 +20,21 @@ class ContactType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'Poutine'
+                    'placeholder' => 'Jones'
                 ]
             ])
             ->add('prenom', TextType::class, [
                 'label' => false,
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'Vladir'
+                    'placeholder' => 'Jhon'
                 ]
             ])
             ->add('email', EmailType::class, [
                 'label' => false,
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'Vladounet@gmail.com'
+                    'placeholder' => 'JhonJones@gmail.com'
                 ]
             ])
             ->add('telephone', TelType::class, [

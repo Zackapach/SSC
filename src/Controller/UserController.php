@@ -11,6 +11,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\UserType;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class UserController extends AbstractController
 {
@@ -48,6 +50,8 @@ class UserController extends AbstractController
 
                 $entityManager->persist($user);
                 $entityManager->flush();
+
+
 
                 $this->addFlash('success', 'Votre mot de passe a été mis à jour avec succès.');
 

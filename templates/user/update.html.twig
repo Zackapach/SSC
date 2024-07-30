@@ -21,18 +21,13 @@
     {{ form_end(form) }}
     {{ form_errors(form) }}
 
-    {# {{ form_start(userForm) }} #}
-    
-
- {# {{ form_row(userForm.email) }}
-{{ form_row(userForm.userProfil.firstName) }}
-{{ form_row(userForm.userProfil.lastName) }}
-{{ form_row(userForm.userProfil.phone) }}
-{{ form_row(userForm.userProfil.adress) }}
-{{ form_row(userForm.userProfil.dateOfBirth) }}
-{{ form_row(userForm.userProfil.bio) }}
-
-
-    <button type="submit" class="btn btn-primary">Modifier my profile</button>
-    {{ form_end(userForm) }} #}
+   <div class="blue-form">
+                    <h3>Modifier mon mot de passe</h3>
+                    {{ form_start(ChangePasswordForm) }}
+                    {{ form_row(ChangePasswordForm.currentPassword) }}
+                    {{ form_row(ChangePasswordForm.newPassword.first) }}
+                    {{ form_row(ChangePasswordForm.newPassword.second) }}
+                    <button type="submit" class="nav-button">Modifier mon mot de passe</button>
+                    {{ form_end(ChangePasswordForm) }}
+                </div>
 {% endblock %}

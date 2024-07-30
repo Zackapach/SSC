@@ -6,18 +6,25 @@ use App\Entity\User;
 use App\Entity\UserProfil;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class ChangeEmailType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('email')
-            ->add('password', PasswordType::class, [
-                'mapped' => false
+            ->add('roles')
+            ->add('password')
+            ->add('createdAt', null, [
+                'widget' => 'single_text',
+            ])
+            ->add('isActive')
+            ->add('isVerified')
+            ->add('userProfil', EntityType::class, [
+                'class' => UserProfil::class,
+                'choice_label' => 'id',
             ])
         ;
     }
