@@ -22,11 +22,6 @@ class Cour
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $calendrier = null;
-
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $heure = null;
 
     #[ORM\Column]
     private ?int $duration = null;
@@ -67,6 +62,9 @@ class Cour
     #[ORM\OneToMany(targetEntity: Avis::class, mappedBy: 'cour', orphanRemoval: true)]
     private Collection $avis;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $calendrier = null;
+
     public function __construct()
     {
         $this->planing = new ArrayCollection();
@@ -103,29 +101,6 @@ class Cour
         return $this;
     }
 
-    public function getCalendrier(): ?\DateTimeInterface
-    {
-        return $this->calendrier;
-    }
-
-    public function setCalendrier(\DateTimeInterface $calendrier): static
-    {
-        $this->calendrier = $calendrier;
-
-        return $this;
-    }
-
-    public function getHeure(): ?\DateTimeInterface
-    {
-        return $this->heure;
-    }
-
-    public function setHeure(\DateTimeInterface $heure): static
-    {
-        $this->heure = $heure;
-
-        return $this;
-    }
 
     public function getDuration(): ?int
     {
@@ -285,6 +260,18 @@ class Cour
                 $avi->setCour(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCalendrier(): ?\DateTimeInterface
+    {
+        return $this->calendrier;
+    }
+
+    public function setCalendrier(\DateTimeInterface $calendrier): static
+    {
+        $this->calendrier = $calendrier;
 
         return $this;
     }

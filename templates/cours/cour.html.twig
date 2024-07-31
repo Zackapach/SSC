@@ -3,24 +3,37 @@
 {% block title %}Hello CoursController!{% endblock %}
 
 {% block body %}
-<h1>Liste des cours</h1>
 
-<ul>
-    {% for cour in cours %}
-        <li>
-            {{ cour.nom }} - {{ cour.debut|date('d/m/Y H:i') }} à {{ cour.fin|date('d/m/Y H:i') }}
-            <a href="{{ path('cours_reserver', {id: cour.id}) }}">Réserver</a>
-        </li>
-    {% endfor %}
-</ul>
-
-<h2>Réserver le cours: {{ cours.nom }}</h2>
-
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+    <div style="margin-top: 200px" id='calendar'></div>
+    <span id='events' data-event="{{ cours|json_encode() }}"></span>
 
 <a href="{{ path('cours_index') }}">Retour à la liste des cours</a>
 
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script>
+        let events = document.querySelector('#events');
 
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'fr',
+            firstDay: 1,
+            initialView: 'timeGridWeek',
+            headerToolbar: {
+                start: 'title',
+                center: '',
+                end: 'timeGridDay,timeGridWeek,dayGridMonth today prev,next'
+            },
+            events: JSON.parse(events.getAttribute('data-event')),
+            eventClick: function(info) {
+                console.log(info);
+                console.log(info.event);
+
+                window.open('http://localhost:8000/cours/reserver/' + info.event.id, '_blank');
+            }
+        });
+        calendar.render();
+      });
+
+    </script>
 {% endblock %}
