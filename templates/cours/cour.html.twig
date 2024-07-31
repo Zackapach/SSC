@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CoursController!{% endblock %}
+
+{% block body %}
+<h1>Liste des cours</h1>
+
+<ul>
+    {% for cour in cours %}
+        <li>
+            {{ cour.nom }} - {{ cour.debut|date('d/m/Y H:i') }} à {{ cour.fin|date('d/m/Y H:i') }}
+            <a href="{{ path('cours_reserver', {id: cour.id}) }}">Réserver</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Réserver le cours: {{ cours.nom }}</h2>
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+
+<a href="{{ path('cours_index') }}">Retour à la liste des cours</a>
+
+
+{% endblock %}

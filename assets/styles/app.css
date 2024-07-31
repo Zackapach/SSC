@@ -7,9 +7,12 @@
 * {
   margin: 0;
   padding: 0;
+  
 
 }
-
+/* html {
+  scroll-behavior: smooth;
+} */
 /* START BARRE DE NAVIGATION  */
 
 h1, h2, h3, h4, h5, h6{
@@ -467,3 +470,18 @@ p{
 }
 
 /************************** END SECTION CONTACT **********************************/
+
+.section-abonnement{
+  display: flex;
+  
+}
+
+.section-abonnement img{
+  background-repeat: no-repeat;
+  padding: 10px;
+}
+
+.plan{
+  padding: 10px;
+  
+}
