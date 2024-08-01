@@ -1,3 +1,7 @@
 workers:
   messenger:
     cmd: ['symfony', 'console', 'messenger:consume', 'async']
+
+  messenger_failed:
+    cmd: ['symfony', 'console', 'messenger:consume', 'failed']
+    

@@ -101,7 +101,6 @@ class Cour
         return $this;
     }
 
-
     public function getDuration(): ?int
     {
         return $this->duration;
