@@ -36,6 +36,9 @@ class UserProfil
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\OneToOne(mappedBy: 'UserProfil', cascade: ['persist', 'remove'])]
+    private ?Forfait $forfait = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +124,23 @@ class UserProfil
     public function setUser(User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getForfait(): ?Forfait
+    {
+        return $this->forfait;
+    }
+
+    public function setForfait(Forfait $forfait): static
+    {
+        // set the owning side of the relation if necessary
+        if ($forfait->getUserProfil() !== $this) {
+            $forfait->setUserProfil($this);
+        }
+
+        $this->forfait = $forfait;
 
         return $this;
     }

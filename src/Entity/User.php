@@ -182,13 +182,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setUserProfil(?UserProfil $userProfil): static
     {
-        // unset the owning side of the relation if necessary
-        if ($userProfil === null && $this->userProfil !== null) {
-            $this->userProfil->setUser(null);
-        }
-
         // set the owning side of the relation if necessary
-        if ($userProfil !== null && $userProfil->getUser() !== $this) {
+        if ($userProfil->getUser() !== $this) {
             $userProfil->setUser($this);
         }
 

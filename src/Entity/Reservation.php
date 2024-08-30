@@ -22,11 +22,16 @@ class Reservation
     #[ORM\JoinColumn(nullable: false)]
     private ?Cour $cour = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $reservationDate = null;
+   
 
     #[ORM\Column(length: 50)]
     private ?string $status = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $reservationDate = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $reservationTime = null;
 
     public function getId(): ?int
     {
@@ -57,6 +62,18 @@ class Reservation
         return $this;
     }
 
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
     public function getReservationDate(): ?\DateTimeInterface
     {
         return $this->reservationDate;
@@ -69,14 +86,14 @@ class Reservation
         return $this;
     }
 
-    public function getStatus(): ?string
+    public function getReservationTime(): ?\DateTimeInterface
     {
-        return $this->status;
+        return $this->reservationTime;
     }
 
-    public function setStatus(string $status): static
+    public function setReservationTime(\DateTimeInterface $reservationTime): static
     {
-        $this->status = $status;
+        $this->reservationTime = $reservationTime;
 
         return $this;
     }

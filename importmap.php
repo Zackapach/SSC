@@ -18,10 +18,6 @@ return [
         'path' => './assets/abonnement.js',
         'entrypoint' => true,
     ],
-    'abonnement' => [
-        'path' => './assets/script.js',
-        'entrypoint' => true,
-    ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],

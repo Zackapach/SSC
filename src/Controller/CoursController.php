@@ -9,26 +9,29 @@ use App\Form\CoursReservationType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Cour;
 use App\Repository\CourRepository;
+use App\Repository\PlaningRepository;
 use DateInterval;
 use DateTime;
 
 class CoursController extends AbstractController
 {
     #[Route('/cours', name: 'cours_index')]
-    public function index(CourRepository $courRepository): Response
+    public function index(PlaningRepository $planingRepository): Response
     {
-        $cours = $courRepository->findAll();
+        $planings = $planingRepository->findAll();
         $jsonCours = [];
-
-        foreach($cours as $cour) {
+        foreach($planings as $date) {
             $jsonCours[] = [
-                'title' => $cour->getTitle(),
-                'start' => $cour->getCalendrier()->format('Y-m-d H:i:s'),
-                'end' => $cour->getCalendrier()->add(new DateInterval('PT'.$cour->getDuration().'H'))->format('Y-m-d H:i:s'),
-                'id' => $cour->getId()
+                'title' => $date->getCour()->getTitle(),
+                'start' => $date->getDate()->modify($date->getHeureDebut()->format('H:i:s'))->format('Y-m-d H:i:s'),
+                'end' => $date->getDate()->modify($date->getHeureFin()->format('H:i:s'))->format('Y-m-d H:i:s'),
+                'zone' => $date->getZone()->getId(),
+                'id' => $date->getCour()->getId(),
+                // 'color' => 'orange'
             ];
         }
 
+        //dd($jsonCours);
 
         return $this->render('cours/cour.html.twig', [
             'cours' => $jsonCours,
@@ -37,7 +40,7 @@ class CoursController extends AbstractController
     #[Route('/cours/reserver/{id}', name: 'cours_reserver')]
     public function reserver(Request $request, Cour $cour): Response
     {
-        dd($cour);
+   
         $form = $this->createForm(CoursReservationType::class);
         $form->handleRequest($request);
 
@@ -49,9 +52,9 @@ class CoursController extends AbstractController
             return $this->redirectToRoute('cours_index');
         }
 
-        return $this->render('cours/reserver.html.twig', [
+        return $this->render('coursreservation/coursreservation.html.twig', [
             'cours' => $cour,
-            'form' => $form->createView(),
+            'coursreservation' => $form->createView(),
         ]);
     }
 

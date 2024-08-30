@@ -70,9 +70,10 @@
 			<h4>DISCIPLINE</h4>
 			<article class="grid">
 				<div class="boxe-anglaise">
+					<a href="">
 					<span class="blackbarre">
 						<h6>BOXE ANGLAISE</h6>
-					</span>
+					</span></a>
 				</div>
 				<div class="mma">
 					<a href="">
@@ -82,39 +83,46 @@
 					</a>
 				</div>
 				<div class="lutte">
+				<a href="">
 					<span class="blackbarre">
 						<h6>LUTTE</h6>
-					</span>
+					</span></a>
 				</div>
 				<div class="kids">
+				<a href="">
 					<span class="blackbarre">
 						<h6>KIDS & ADOS</h6>
-					</span>
+					</span></a>
 				</div>
 				<div class="muay-thai">
+				<a href="">
 					<span class="blackbarre">
-						<h6>MUAY THAÏ</h6>
+						<h6>MUAY THAÏ</h6></a>
 					</span>
 				</div>
 				<div class="grappling">
+				<a href="">
 					<span class="blackbarre">
 						<h6>GRAPPLING</h6>
-					</span>
+					</span></a>
 				</div>
 				<div class="rs-boxing">
+				<a href="">
 					<span class="blackbarre">
 						<h6>RS BOXING</h6>
-					</span>
+					</span></a>
 				</div>
 				<div class="crossfit">
+				<a href="">
 					<span class="blackbarre">
 						<h6>CROSS FIT</h6>
-					</span>
+					</span></a>
 				</div>
 				<div class="piyo">
+				<a href="">
 					<span class="blackbarre">
 						<h6>PIYO</h6>
-					</span>
+					</span></a>
 				</div>
 			</article>
 
@@ -133,8 +141,315 @@
 
 		<article class="section-planning-planning">
 
-			<img src="{{asset('img/ringside_planning_2023-2024.png')}}" alt="">
+			{# <img src="{{asset('img/ringside_planning_2023-2024.png')}}" alt=""> #}
+			<div style="margin-top: 200px" id='calendar'></div>
+			
+{# <a href="{{ path('cours_index') }}">Retour à la liste des cours</a> #}
 
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script>
+        let events = document.querySelector('#events');
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'fr',
+            height:600,
+            firstDay: 1,
+            hiddenDays:[0],
+            initialView: 'timeGridWeek',
+            headerToolbar: {
+                start: 'title',
+                center: '',
+                end: 'timeGridWeek today prev,next'},
+                slotMinTime: '09:00:00',
+                slotMaxTime: '22:00:00',
+				allDaySlot: false
+            ,
+           // events: JSON.parse(events.getAttribute('data-event')),
+        
+            events: [ 
+                {
+                    groupId:'Thaï1',
+                    title:'Muaï Thaï',
+                    daysOfWeek: ['1','3'],
+                    startTime:'10:00:00',
+                    endTime:'12:30:00',
+                    color:'orange'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'RS Boxing',
+                    daysOfWeek: ['1'],
+                    startTime:'19:00:00',
+                    endTime:'20:00:00',
+                    color:'blue'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'RS Boxing',
+                    daysOfWeek: ['1'],
+                    startTime:'12:30:00',
+                    endTime:'13:30:00',
+                    color:'blue'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'Wood',
+                    daysOfWeek: ['1'],
+                    startTime:'12:30:00',
+                    endTime:'13:30:00',
+                    color:'purple'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'Wood',
+                    daysOfWeek: ['1','3'],
+                    startTime:'17:30:00',
+                    endTime:'18:30:00',
+                    color:'purple'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'Muaï Thaï',
+                    daysOfWeek: ['1'],
+                    startTime:'18:00:00',
+                    endTime:'19:00:00',
+                    color:'orange'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'MMA',
+                    daysOfWeek: ['1'],
+                    startTime:'20:00:00',
+                    endTime:'21:15:00',
+                    color:'green'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'Cross Training',
+                    daysOfWeek: ['1'],
+                    startTime:'18:30:00',
+                    endTime:'19:30:00',
+                    color:'purple'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'Boxe Anglaise',
+                    daysOfWeek: ['1','3'],
+                    startTime:'19:30:00',
+                    endTime:'21:00:00',
+                    color:'red'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'Muaï Thaï',
+                    daysOfWeek: ['2'],
+                    startTime:'19:45:00',
+                    endTime:'21:00:00',
+                    color:'orange'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'PREPA FIGHT',
+                    daysOfWeek: ['2','4'],
+                    startTime:'17:30:00',
+                    endTime:'18:30:00',
+                    color:'blue'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'Grappling',
+                    daysOfWeek: ['2','4'],
+                    startTime:'18:30:00',
+                    endTime:'19:45:00',
+                    color:'green'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'Lutte',
+                    daysOfWeek: ['2','4'],
+                    startTime:'10:00:00',
+                    endTime:'12:30:00',
+                    color:'green'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'RS Boxing',
+                    daysOfWeek: ['2','3','4','5'],
+                    startTime:'12:30:00',
+                    endTime:'13:30:00',
+                    color:'blue'
+                },
+                {
+                    groupId:'Thaï1',
+                    title:'Wood',
+                    daysOfWeek: ['2','3','4','5'],
+                    startTime:'12:30:00',
+                    endTime:'13:30:00',
+                    color:'purple'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'Thaï Kids',
+                    daysOfWeek: ['3'],
+                    startTime:'14:00:00',
+                    endTime:'15:00:00',
+                    color:'black'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'Thaï ados',
+                    daysOfWeek: ['3'],
+                    startTime:'15:00:00',
+                    endTime:'16:00:00',
+                    color:'black'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'Thaï Ados',
+                    daysOfWeek: ['3'],
+                    startTime:'16:00:00',
+                    endTime:'17:30:00',
+                    color:'black'
+                },
+
+                {
+                   groupId:'MMA1',
+                    title:'Muaï Thaï',
+                    daysOfWeek: ['3'],
+                    startTime:'19:45:00',
+                    endTime:'21:00:00',
+                    color:'orange'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'Muaï Thaï',
+                    daysOfWeek: ['4'],
+                    startTime:'19:45:00',
+                    endTime:'21:00:00',
+                    color:'orange'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'RENFO',
+                    daysOfWeek: ['4'],
+                    startTime:'18:30:00',
+                    endTime:'19:30:00',
+                    color:'purple'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'CARDIO',
+                    daysOfWeek: ['4'],
+                    startTime:'19:30:00',
+                    endTime:'20:30:00',
+                    color:'purple'
+                },
+                 {
+                   groupId:'MMA1',
+                    title:'Grappling / MMA',
+                    daysOfWeek: ['5'],
+                    startTime:'10:30:00',
+                    endTime:'12:00:00',
+                    color:'green'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'MMA',
+                    daysOfWeek: ['5'],
+                    startTime:'17:30:00',
+                    endTime:'18:30:00',
+                    color:'green'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'Cross Training',
+                    daysOfWeek: ['5'],
+                    startTime:'18:00:00',
+                    endTime:'19:00:00',
+                    color:'purple'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'Boxe Anglaise',
+                    daysOfWeek: ['5'],
+                    startTime:'19:00:00',
+                    endTime:'20:15:00',
+                    color:'red'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'Muaï Thaï',
+                    daysOfWeek: ['5'],
+                    startTime:'19:45:00',
+                    endTime:'21:00:00',
+                    color:'orange'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'Thaï Kids',
+                    daysOfWeek: ['6'],
+                    startTime:'09:00:00',
+                    endTime:'10:00:00',
+                    color:'black'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'Thaï Ados',
+                    daysOfWeek: ['6'],
+                    startTime:'10:00:00',
+                    endTime:'11:00:00',
+                    color:'black'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'Boxe Anglaise',
+                    daysOfWeek: ['6'],
+                    startTime:'11:00:00',
+                    endTime:'12:00:00',
+                    color:'red'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'RS Boxing',
+                    daysOfWeek: ['6'],
+                    startTime:'11:00:00',
+                    endTime:'12:00:00',
+                    color:'blue'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'Cross Training',
+                    daysOfWeek: ['6'],
+                    startTime:'11:30:00',
+                    endTime:'12:30:00',
+                    color:'purple'
+                },
+                {
+                   groupId:'MMA1',
+                    title:'sparring',
+                    daysOfWeek: ['6'],
+                    startTime:'13:30:00',
+                    endTime:'14:00:00',
+                    color:'yellow'
+                },
+
+             ]
+             ,
+             
+
+            eventClick: function(info) {
+                console.log(info);
+                console.log(info.event);
+
+                window.open('http://localhost:8000/cours/reserver/' + info.event.id, '_blank');
+            }
+        });
+        calendar.render();
+      });
+
+    </script>
 		</article>
 
 	</section>

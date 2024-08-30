@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réserver un Cours{% endblock %}
+
+{% block body %}
+    <h1>Réserver un Cours</h1>
+{{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.title) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.description) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.calendrier) }}
+            {{ form_widget(form.calendrier, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.calendrier) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.heure) }}
+            {{ form_widget(form.heure, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.heure) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.duration) }}
+            {{ form_widget(form.duration, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.duration) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.disponible) }}
+            {{ form_widget(form.disponible, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.disponible) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.nombrePlaceDisponible) }}
+            {{ form_widget(form.nombrePlaceDisponible, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.nombrePlaceDisponible) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.user) }}
+            {{ form_widget(form.user, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.user) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.zone) }}
+            {{ form_widget(form.zone, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.zone) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.notifcation) }}
+            {{ form_widget(form.notifcation, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.notifcation) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Réserver</button>
+    {{ form_end(form) }}
+    
+{% endblock %}

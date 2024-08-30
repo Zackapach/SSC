@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ForfaitRepository;
+use App\Enum\ForfaitNameEnum;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,9 +14,6 @@ class Forfait
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\Column(length: 50)]
-    private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
@@ -35,21 +33,16 @@ class Forfait
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateFin = null;
 
+    #[ORM\OneToOne(inversedBy: 'forfait', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?UserProfil $UserProfil = null;
+
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, enumType: ForfaitNameEnum::class)]
+    private array $name = [];
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): static
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getDescription(): ?string
@@ -120,6 +113,33 @@ class Forfait
     public function setDateFin(\DateTimeInterface $dateFin): static
     {
         $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    public function getUserProfil(): ?UserProfil
+    {
+        return $this->UserProfil;
+    }
+
+    public function setUserProfil(UserProfil $UserProfil): static
+    {
+        $this->UserProfil = $UserProfil;
+
+        return $this;
+    }
+
+    /**
+     * @return ForfaitNameEnum[]
+     */
+    public function getName(): array
+    {
+        return $this->name;
+    }
+
+    public function setName(array $name): static
+    {
+        $this->name = $name;
 
         return $this;
     }
