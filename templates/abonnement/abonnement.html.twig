@@ -1,45 +1,128 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AbonnementController!{% endblock %}
+{% block title %}Hello AbonnementController!
+{% endblock %}
 
 {% block body %}
-    
- <section class="section-abonnement">
 
- <article class="beginner">
+	{# <section class="section-abonnement">
 
-  <div class="plan">
-              <div class="plan">
-                <img src="{{asset('img/abonnement/rino.png')}}" alt="Fighter -">
-                <h3>FIGHTER -</h3>
+		<article class="beginner plan">
+                <div class="plan-img">
+                	<img src="{{asset('img/abonnement/rino.png')}}" alt="Fighter -">
+                </div>
+					<div class="abonnement-texte">
+						<h3>FIGHTER -</h3>
+						<p>Ideal for individuals who need quick access to basic features.</p>
+						<p class="price">€130
+							<span>/ per lesson</span>
+						</p>
+						<button>Get Started Now</button>
+						<ul>
+							<li>Accès à 10 séances cours collectifs au choix</li>
+							<li>Accès salle de sport</li>
+							<li class="disabled">Upload custom icons and fonts</li>
+							<li class="disabled">Unlimited Sharing</li>
+							<li class="disabled">Upload graphics & video in up to 4k</li>
+							<li class="disabled">Unlimited Projects</li>
+							<li class="disabled">Instant Access to our design system</li>
+							<li class="disabled">Create teams to collaborate on designs</li>
+						</ul>
+				</div>
+
+		</article>
+
+
+			<article class="semi-pro">
+
+
+				<div class="plan">
+					<img src="{{asset('img/abonnement/kong.png')}}" alt="Fighter - Beginner">
+					<h3>FIGHTER - BEGINNER</h3>
+					<p>Ideal for individuals who need advanced features and tools for client work.</p>
+					<p class="price">€69
+						<span>/ month</span>
+					</p>
+					<button>Get Started Now</button>
+					<ul>
+						<li>20,000+ of PNG & SVG graphics</li>
+						<li>Access to 100 million stock images</li>
+						<li>Upload custom icons and fonts</li>
+						<li>Unlimited Sharing</li>
+						<li>Upload graphics & video in up to 4k</li>
+						<li>Unlimited Projects</li>
+						<li>Instant Access to our design system</li>
+						<li>Create teams to collaborate on designs</li>
+					</ul>
+				</div>
+
+			</article>
+
+
+			<article class="pro">
+
+
+				<div class="plan">
+					<img src="{{asset('img/abonnement/tiger.png')}}" alt="">
+					<h3>FIGHTER PRO</h3>
+					<p>Ideal for businesses who need personalized services and security for large teams.</p>
+					<p class="price">€690
+						<span>/ year</span>
+					</p>
+					<button>Get Started Now</button>
+					<ul>
+						<li>20,000+ of PNG & SVG graphics</li>
+						<li>Access to 100 million stock images</li>
+						<li>Upload custom icons and fonts</li>
+						<li>Unlimited Sharing</li>
+						<li>Upload graphics & video in up to 4k</li>
+						<li>Unlimited Projects</li>
+						<li>Instant Access to our design system</li>
+						<li>Suivi de progression</li>
+					</ul>
+				</div>
+
+			</article>
+
+
+		</section> #}
+        <section class="forfaits-section">
+        <h2>FORFAITS</h2>
+        <div class="plans-container">
+            <!-- Beginner Plan -->
+            <div class="plan beginner">
+                <img src="{{asset('img/abonnement/rino.png')}}" alt="Rhino - Beginner Plan">
+                <div class="plan-content">
+                <h3>Beginner</h3>
+                <h4>FIGHTER - BEGINNER</h4>
                 <p>Ideal for individuals who need quick access to basic features.</p>
-                <p class="price">€130 <span>/ per lesson</span></p>
-                <button>Get Started Now</button>
-                <ul>
-                    <li>Accès à 10 séances cours collectifs au choix</li>
-                    <li>Accès salle de sport</li>
-                    <li class="disabled">Upload custom icons and fonts</li>
-                    <li class="disabled">Unlimited Sharing</li>
-                    <li class="disabled">Upload graphics & video in up to 4k</li>
-                    <li class="disabled">Unlimited Projects</li>
-                    <li class="disabled">Instant Access to our design system</li>
-                    <li class="disabled">Create teams to collaborate on designs</li>
+                <div class="price">€130 /10 lesson</div>
+                <button class="cta-button">GET STARTED NOW</button>
+                <ul class="features">
+                    <li>Accès à 10 séances cours collectif au choix</li>
+                    <li>Access salle de sport</li>
+                    <li>Upload custom icons and fonts</li>
+                    <li class="unavailable">Unlimited Sharing</li>
+                    <li class="unavailable">Upload graphics & video in up to 4k</li>
+                    <li class="unavailable">Unlimited Projects</li>
+                    <li class="unavailable">Instant Access to our design system</li>
+                    <li class="unavailable">Create teams to collaborate on designs</li>
                 </ul>
+                
+                </div>
             </div>
- 
- </article>
 
-
- <article class="semi-pro">
- 
-
-   <div class="plan">
-                <img src="{{asset('img/abonnement/kong.png')}}" alt="Fighter - Beginner">
-                <h3>FIGHTER - BEGINNER</h3>
+            <!-- Champion Plan -->
+            <div class="plan champion">
+                <img src="{{asset('img/abonnement/kong.png')}}" alt="Gorilla - Champion Plan">
+                 <div class="plan-content">
+                
+                <h3>Champion</h3>
+                <h4>FIGHTER - CHAMPION</h4>
                 <p>Ideal for individuals who need advanced features and tools for client work.</p>
-                <p class="price">€69 <span>/ month</span></p>
-                <button>Get Started Now</button>
-                <ul>
+                <div class="price">€69 / Month</div>
+                <button class="cta-button">GET STARTED NOW</button>
+                <ul class="features">
                     <li>20,000+ of PNG & SVG graphics</li>
                     <li>Access to 100 million stock images</li>
                     <li>Upload custom icons and fonts</li>
@@ -49,37 +132,31 @@
                     <li>Instant Access to our design system</li>
                     <li>Create teams to collaborate on designs</li>
                 </ul>
+                </div>
             </div>
- 
- </article>
 
-
- <article class="pro">
- 
-
-
-  <div class="plan">
-                 <img src="{{asset('img/abonnement/tiger.png')}}" alt="">
-                <h3>FIGHTER PRO</h3>
+            <!-- Fighter Plan -->
+            <div class="plan fighter">
+                <img src="{{asset('img/abonnement/tiger.png')}}" alt="Tiger - Fighter Plan">
+                 <div class="plan-content">
+                
+                <h3>Fighter</h3>
+                <h4>FIGHTER - PRO</h4>
                 <p>Ideal for businesses who need personalized services and security for large teams.</p>
-                <p class="price">€690 <span>/ year</span></p>
-                <button>Get Started Now</button>
-                <ul>
+                <div class="price">€690 / Year</div>
+                <button class="cta-button">GET STARTED NOW</button>
+                <ul class="features">
                     <li>20,000+ of PNG & SVG graphics</li>
                     <li>Access to 100 million stock images</li>
                     <li>Upload custom icons and fonts</li>
                     <li>Unlimited Sharing</li>
                     <li>Upload graphics & video in up to 4k</li>
                     <li>Unlimited Projects</li>
-                    <li>Instant Access to our design system</li>
                     <li>Suivi de progression</li>
                 </ul>
+                </div>
             </div>
- 
- </article>
+        </div>
+    </section>
 
-
-
- </section>
-
-{% endblock %}
+	{% endblock %}

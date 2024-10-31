@@ -35,15 +35,15 @@ class Zone
     private Collection $cour;
 
     /**
-     * @var Collection<int, Planing>
+     * @var Collection<int, Planning>
      */
-    #[ORM\OneToMany(targetEntity: Planing::class, mappedBy: 'zone', orphanRemoval: true)]
-    private Collection $planing;
+    #[ORM\OneToMany(targetEntity: Planning::class, mappedBy: 'zone', orphanRemoval: true)]
+    private Collection $planning;
 
     public function __construct()
     {
         $this->cour = new ArrayCollection();
-        $this->planing = new ArrayCollection();
+        $this->planning = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -130,29 +130,29 @@ class Zone
     }
 
     /**
-     * @return Collection<int, Planing>
+     * @return Collection<int, Planning>
      */
-    public function getPlaning(): Collection
+    public function getPlanning(): Collection
     {
-        return $this->planing;
+        return $this->planning;
     }
 
-    public function addPlaning(Planing $planing): static
+    public function addPlanning(Planning $planning): static
     {
-        if (!$this->planing->contains($planing)) {
-            $this->planing->add($planing);
-            $planing->setZone($this);
+        if (!$this->planning->contains($planning)) {
+            $this->planning->add($planning);
+            $planning->setZone($this);
         }
 
         return $this;
     }
 
-    public function removePlaning(Planing $planing): static
+    public function removePlanning(Planning $planning): static
     {
-        if ($this->planing->removeElement($planing)) {
+        if ($this->planning->removeElement($planning)) {
             // set the owning side to null (unless already changed)
-            if ($planing->getZone() === $this) {
-                $planing->setZone(null);
+            if ($planning->getZone() === $this) {
+                $planning->setZone(null);
             }
         }
 

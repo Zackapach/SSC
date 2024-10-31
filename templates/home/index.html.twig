@@ -17,7 +17,7 @@
 
 	<main>
 
-		<section class="concept">
+		{# <section class="concept">
 			<div class="main-block">
 
 				<article class="left">
@@ -63,7 +63,31 @@
 
 				<h3>3 ZONE D'ENTRAINEMENT</h3>
 			</article>
-		</section>
+		</section> #}
+
+        <section class="concept-section">
+        <h2>CONCEPT</h2>
+        <div class="concept-content">
+            <div class="concept-item">
+                <h3>Une salle, une equipe</h3>
+                <p>Ring Side, situé à Dardilly dans l'ouest lyonnais, est un centre d'entraînement spécialisé dans les sports de combat et la préparation physique générale. Son succès s'explique par la diversité des activités encadrées par des athlètes renommés, la multitude de créneaux disponibles, l'attention portée à l'esthétique et l'atmosphère conviviale. Ring Side propose des cours collectifs quotidiens et un accès libre à la salle pour une pratique autonome.</p>
+            </div>
+            <div class="concept-item">
+                <h3>6 disciplines tout niveaux</h3>
+                <p>Débutants comme initiés peuvent pratiquer un large choix de disciplines (RS Boxing, Boxe Anglaise, Muay Thaï, MMA, Lutte, Grappling) dans une ambiance ludique et bienveillante. Nos compétiteurs bénéficient quant à eux d’une prise en charge particulière sur des créneaux dédiés.</p>
+            </div>
+            <div class="concept-item">
+                <h3>4 format de préparation</h3>
+                <p>Nous proposons quotidiennement des sessions encadrées de Conditioning. Choisissez entre nos WOD, CrossTraining et Prépa Fight pour vous remettre en forme ou booster votre condition physique. Profitez également de nos créneaux de Pilates-Yoga (PIYO) pour équilibrer parfaitement votre entraînement.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="libre-acces-section">
+        <h2>LIBRE ACCES</h2>
+        <p>En dehors des cours collectifs, toutes nos installations restent accessibles du matin au soir : Ring de boxe, tatami, sacs de frappe, paos, zone fonctionnelle (cardio, musculation), etc.</p>
+        <p>Lieu de convivialité par excellence, notre bar vous attend avant et après votre entraînement. Et parce qu’en plus d'être affutés nous vous voulons beaux, notre boutique est à votre disposition pour porter haut les couleurs du club à la salle comme à la ville!</p>
+    </section>
 
 
 		<section id="discipline" class="discipline">
@@ -154,7 +178,7 @@
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
             locale: 'fr',
-            height:600,
+            height:900,
             firstDay: 1,
             hiddenDays:[0],
             initialView: 'timeGridWeek',
@@ -163,7 +187,7 @@
                 center: '',
                 end: 'timeGridWeek today prev,next'},
                 slotMinTime: '09:00:00',
-                slotMaxTime: '22:00:00',
+                slotMaxTime: '21:30:00',
 				allDaySlot: false
             ,
            // events: JSON.parse(events.getAttribute('data-event')),
@@ -454,6 +478,18 @@
 
 	</section>
 
+    <div class="container">
+    <div class="title">BOUTIQUE RINGSIDE</div>
+    <div class="content">
+        <img src="gloves.jpg" alt="Ringside Gloves">
+        <div class="text-box">
+            <h2>Tous vos accessoires pour vos entraînements sportifs</h2>
+            <p>Lorem ipsum dolor sit amet consectetur. Natoque libero enim pellentesque commodo. Odio morbi ullamcorper commodo aliquet ut sagittis aliquam. At viverra quisque lorem auctor. Lectus leo pellentesque amet nisi. Mattis egestas arcu quam bibendum mattis vitae eget.</p>
+            <a href="#" class="button">VOIR LA BOUTIQUE</a>
+        </div>
+    </div>
+</div>
+
 	<section class="section-contact">
 
 		<article class="article-contact">
@@ -461,7 +497,7 @@
 
 				<div class="section-title-contact">
 
-					<h4>RINGSIDE</h4>
+					<h4>Contact</h4>
 					<hr class="redLine">
 
 				</div>

@@ -44,6 +44,14 @@ class ContactType extends AbstractType
                     'placeholder' => '00123456789'
                 ]
             ])
+            ->add('objet', TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => "Objet"
+                ]
+            ])
+
             ->add('texte', TextareaType::class, [
                 'label' => false,
                 'attr' => [

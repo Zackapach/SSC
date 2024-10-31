@@ -79,6 +79,7 @@ nav .menu {
   color: black;
   padding: 30px;
   display: none;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.100);
 }
 
 nav .menu a {
@@ -168,7 +169,7 @@ header .button:hover {
 .black-block {
   background-color: black;
   color: white;
-  height: 100px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -216,6 +217,87 @@ header .button:hover {
 }
 
 /* END SECTION CONCEPT  */
+
+/* Section Title Styling */
+.concept-section h2,
+.libre-acces-section h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+    text-transform: uppercase;
+    /* text-align: center; */
+    margin: 40px 0 20px;
+    position: relative;
+}
+
+.concept-section h2::after,
+.libre-acces-section h2::after {
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: red;
+    margin: 10px auto;
+}
+
+/* Concept Section Styling */
+.concept-section {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.concept-content {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.concept-item {
+    flex: 1;
+    min-width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.concept-item h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.concept-item p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Libre Accès Section Styling */
+.libre-acces-section {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.libre-acces-section h2 {
+    margin-bottom: 20px;
+
+}
+
+.libre-acces-section p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    text-align: center;
+}
 
 /* START SECTION DISCIPLINE */
 
@@ -448,6 +530,8 @@ p{
 
 .submit-button {
   margin-top: 30px;
+  display: flex;
+  justify-content: end;
 }
 
 .section-contact input {
@@ -471,19 +555,117 @@ p{
 
 /************************** END SECTION CONTACT **********************************/
 
-.section-abonnement{
+.forfaits-section {
+  text-align: center;
+  padding: 40px 20px;
+  margin-bottom: 50px;
+}
+
+.forfaits-section h2 {
+  color: #00b33c;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.plans-container {
   display: flex;
-  
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.section-abonnement img{
-  background-repeat: no-repeat;
-  padding: 10px;
+.plan {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  /* padding: 20px; */
+  text-align: center;
+  position: relative;
+  transition: all 0.5s;
 }
 
-.plan{
-  padding: 10px;
-  
+.plan:hover{
+  transform: scale(1.1);
+}
+
+.plan img {
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+  height: 370px;
+
+  margin-bottom: 10px;
+}
+.plan-content{
+  padding: 20px;
+}
+
+.plan h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.plan h4 {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.plan p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-size: 24px;
+  color: #e60000;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.cta-button {
+  background-color: #e60000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.features {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+}
+
+.features li {
+  font-size: 14px;
+  padding: 5px 0;
+  /* color: #333; */
+}
+
+.features .unavailable {
+  color: #ccc;
+  text-decoration: line-through;
+}
+
+.beginner {
+  border: 2px solid #00bfff;
+}
+
+.champion {
+  border: 2px solid #000;
+  background-color: #000;
+  color: white;
+}
+
+.fighter {
+  border: 2px solid #666;
 }
 
 /*********************** START RESERVATION ********************/

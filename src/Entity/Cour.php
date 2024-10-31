@@ -45,10 +45,10 @@ class Cour
     private ?Notification $notifcation = null;
 
     /**
-     * @var Collection<int, Planing>
+     * @var Collection<int, Planning>
      */
-    #[ORM\OneToMany(targetEntity: Planing::class, mappedBy: 'cour', orphanRemoval: true)]
-    private Collection $planing;
+    #[ORM\OneToMany(targetEntity: Planning::class, mappedBy: 'cour', orphanRemoval: true)]
+    private Collection $planning;
 
     /**
      * @var Collection<int, Reservation>
@@ -67,7 +67,7 @@ class Cour
 
     public function __construct()
     {
-        $this->planing = new ArrayCollection();
+        $this->planning = new ArrayCollection();
         $this->reservation = new ArrayCollection();
         $this->avis = new ArrayCollection();
     }
@@ -174,29 +174,29 @@ class Cour
     }
 
     /**
-     * @return Collection<int, Planing>
+     * @return Collection<int, Planning>
      */
-    public function getPlaning(): Collection
+    public function getPlanning(): Collection
     {
-        return $this->planing;
+        return $this->planning;
     }
 
-    public function addPlaning(Planing $planing): static
+    public function addPlanning(Planning $planning): static
     {
-        if (!$this->planing->contains($planing)) {
-            $this->planing->add($planing);
-            $planing->setCour($this);
+        if (!$this->planning->contains($planning)) {
+            $this->planning->add($planning);
+            $planning->setCour($this);
         }
 
         return $this;
     }
 
-    public function removePlaning(Planing $planing): static
+    public function removePlanning(Planning $planning): static
     {
-        if ($this->planing->removeElement($planing)) {
+        if ($this->planning->removeElement($planning)) {
             // set the owning side to null (unless already changed)
-            if ($planing->getCour() === $this) {
-                $planing->setCour(null);
+            if ($planning->getCour() === $this) {
+                $planning->setCour(null);
             }
         }
 

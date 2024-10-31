@@ -9,18 +9,18 @@ use App\Form\CoursReservationType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Cour;
 use App\Repository\CourRepository;
-use App\Repository\PlaningRepository;
+use App\Repository\PlanningRepository;
 use DateInterval;
 use DateTime;
 
 class CoursController extends AbstractController
 {
     #[Route('/cours', name: 'cours_index')]
-    public function index(PlaningRepository $planingRepository): Response
+    public function index(PlanningRepository $PlanningRepository): Response
     {
-        $planings = $planingRepository->findAll();
+        $plannings = $PlanningRepository->findAll();
         $jsonCours = [];
-        foreach($planings as $date) {
+        foreach($plannings as $date) {
             $jsonCours[] = [
                 'title' => $date->getCour()->getTitle(),
                 'start' => $date->getDate()->modify($date->getHeureDebut()->format('H:i:s'))->format('Y-m-d H:i:s'),

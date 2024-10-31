@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Planing;
+use App\Entity\Planning;
 use App\Form\PlanningType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,8 +15,8 @@ class PlanningController extends AbstractController
     #[Route('/planning', name: 'app_planning')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
-        // Créer une nouvelle instance de l'entité Planing
-        $planning = new Planing();
+        // Créer une nouvelle instance de l'entité Planning
+        $planning = new Planning();
 
         // Créer le formulaire en utilisant la classe PlanningType
         $form = $this->createForm(PlanningType::class, $planning);

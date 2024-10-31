@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Cour;
-use App\Entity\Planing;
+use App\Entity\Planning;
 use App\Entity\Zone;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -38,7 +38,7 @@ class PlanningType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Planing::class,
+            'data_class' => Planning::class,
         ]);
     }
 }
