@@ -30,11 +30,6 @@
                 allDaySlot: false
             ,
             events: JSON.parse(events.getAttribute('data-event')),
-            eventClick: function(info) {
-                console.log(info);
-                console.log(info.event);
-                window.open('http://localhost:8000/cours/reserver/' + info.event.id, '_blank');
-            }
         });
         calendar.render();
       });

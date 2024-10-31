@@ -22,10 +22,6 @@ class Cour
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-
-    #[ORM\Column]
-    private ?int $duration = null;
-
     #[ORM\Column]
     private ?bool $disponible = null;
 
@@ -41,7 +37,7 @@ class Cour
     private ?int $nombrePlaceDisponible = null;
 
     #[ORM\ManyToOne(inversedBy: 'cour')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Notification $notifcation = null;
 
     /**
@@ -65,11 +61,15 @@ class Cour
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $calendrier = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $duration = null;
+
     public function __construct()
     {
         $this->planning = new ArrayCollection();
         $this->reservation = new ArrayCollection();
         $this->avis = new ArrayCollection();
+        $this->disponible = true;
     }
 
     public function getId(): ?int
@@ -97,18 +97,6 @@ class Cour
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getDuration(): ?int
-    {
-        return $this->duration;
-    }
-
-    public function setDuration(int $duration): static
-    {
-        $this->duration = $duration;
 
         return $this;
     }
@@ -271,6 +259,18 @@ class Cour
     public function setCalendrier(\DateTimeInterface $calendrier): static
     {
         $this->calendrier = $calendrier;
+
+        return $this;
+    }
+
+    public function getDuration(): ?\DateTimeInterface
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(\DateTimeInterface $duration): static
+    {
+        $this->duration = $duration;
 
         return $this;
     }

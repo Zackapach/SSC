@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Controller\Coach;
+
+use App\Entity\Cour;
+use App\Form\CourseType;
+use App\Repository\CourRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
+#[IsGranted('ROLE_COACH')]
+class CoursesController extends AbstractController
+{
+    #[Route('/courses', name: 'app_courses')]
+    public function index(CourRepository $courRepository): Response
+    {
+        $courses = $courRepository->findBy(['user' => $this->getUser()]);
+
+        return $this->render('courses/index.html.twig', [
+            'courses' => $courses,
+        ]);
+    }
+
+    #[Route('/courses/new', name: 'app_courses_new')]
+    public function new(Request $request, EntityManagerInterface $entityManagerInterface): Response
+    {
+        $course = new Cour;
+        $form = $this->createForm(CourseType::class, $course);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $course->setUser($this->getUser());
+            $date = $form->get('duration')->getData();
+            $course->setDuration($date->getTimestamp() / 60);
+            
+            $entityManagerInterface->persist($course);
+            $entityManagerInterface->flush();
+
+            return $this->redirectToRoute('app_courses');
+        }
+
+        return $this->render('courses/new.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/courses/edit/{id}', name: 'app_courses_edit')]
+    public function edit(Cour $course, Request $request, EntityManagerInterface $entityManagerInterface): Response
+    {
+        $form = $this->createForm(CourseType::class, $course);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $entityManagerInterface->flush();
+
+            return $this->redirectToRoute('app_courses');
+        }
+
+        return $this->render('courses/new.html.twig', [
+            'form' => $form,
+        ]);
+    }
+}

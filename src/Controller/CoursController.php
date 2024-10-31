@@ -9,29 +9,26 @@ use App\Form\CoursReservationType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Cour;
 use App\Repository\CourRepository;
-use App\Repository\PlanningRepository;
-use DateInterval;
-use DateTime;
 
 class CoursController extends AbstractController
 {
     #[Route('/cours', name: 'cours_index')]
-    public function index(PlanningRepository $PlanningRepository): Response
+    public function index(CourRepository $courRepository): Response
     {
-        $plannings = $PlanningRepository->findAll();
+        $cours = $courRepository->findBy(['user' => $this->getUser()]);
         $jsonCours = [];
-        foreach($plannings as $date) {
+        foreach($cours as $cour) {
+            $minutes = $cour->getDuration()->getTimestamp() / 60;
             $jsonCours[] = [
-                'title' => $date->getCour()->getTitle(),
-                'start' => $date->getDate()->modify($date->getHeureDebut()->format('H:i:s'))->format('Y-m-d H:i:s'),
-                'end' => $date->getDate()->modify($date->getHeureFin()->format('H:i:s'))->format('Y-m-d H:i:s'),
-                'zone' => $date->getZone()->getId(),
-                'id' => $date->getCour()->getId(),
+                'title' => $cour->getTitle(),
+                'start' => $cour->getCalendrier()->format('Y-m-d H:i:s'),
+                'end' => $cour->getCalendrier()->modify("+{$minutes} minutes")->format('Y-m-d H:i:s'),
+                'zone' => $cour->getZone()->getId(),
+                'id' => $cour->getId(),
+                'url' => $this->generateUrl('app_courses_edit', ['id' => $cour->getId()])
                 // 'color' => 'orange'
             ];
         }
-
-        //dd($jsonCours);
 
         return $this->render('cours/cour.html.twig', [
             'cours' => $jsonCours,
