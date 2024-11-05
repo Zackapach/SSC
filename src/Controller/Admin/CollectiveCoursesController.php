@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Coach;
+namespace App\Controller\Admin;
 
 use App\Entity\Cour;
 use App\Form\CourseType;
@@ -25,7 +25,7 @@ class CollectiveCoursesController extends AbstractController
     {
         $courses = $courRepository->findBy(['user' => $this->getUser()]);
 
-        return $this->render('courses/index.html.twig', [
+        return $this->render('collective_courses/index.html.twig', [
             'courses' => $courses,
         ]);
     }

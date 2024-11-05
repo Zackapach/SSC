@@ -37,7 +37,7 @@ class CoursController extends AbstractController
     #[Route('/cours/reserver/{id}', name: 'cours_reserver')]
     public function reserver(Request $request, Cour $cour): Response
     {
-   
+
         $form = $this->createForm(CoursReservationType::class);
         $form->handleRequest($request);
 

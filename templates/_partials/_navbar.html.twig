@@ -1,33 +1,24 @@
 <nav>
-
 	<ul class="nav">
 		<li>
 			<a href="{{path('app_abonnement')}}">Acceuil</a>
 		</li>
-
 		<li>
 			<a href="#discipline">DISCIPLINE</a>
 		</li>
 		<li>
 			<a href="#planning">PLANNING</a>
 		</li>
-		
-
-		<li class="logo"><img src="{{ asset('/logo/logoringside.png') }}" alt="">
-		</li>
-
+		<li class="logo"><img src="{{ asset('/logo/logoringside.png') }}" alt=""></li>
 		<li>
 			<a href="{{path('app_abonnement')}}">TARIF</a>
 		</li>
 		<li>
 			<a href="{{path('app_abonnement')}}">BOUTIQUE</a>
 		</li>
-
 		<li>
 			{% if app.user %}
-
 				<div>
-
 					<input type="checkbox" id="checkbox-toggle">
 
 					<label for="checkbox-toggle" class="menu-button">
@@ -46,27 +37,24 @@
 						<a href="{{path('app_user_profil_modif_edit')}}">Mon profil</a>
 						{% if is_granted('ROLE_COACH') and is_granted('ROLE_ADMIN') == false %}
 							<a href="{{ path('app_courses')}}">Gerer mes cours</a>
+							<a href="{{path('cours_index')}}">Mon Planing</a>
 						{% endif %}
 						{% if is_granted('ROLE_ADMIN') %}
-							<a href="{{ path('app_collective_courses')}}">Gerer les cours collectif</a>
+							<a href="{{ path('app_collective_courses_index')}}">Gerer les cours collectif</a>
+							<a href="{{ path('app_zones_index')}}">Gerer les Zones</a>
 						{% endif %}
-
-						<a href="{{path('cours_index')}}">Mon Planing</a>
-						<a href="{{path('app_abonnement')}}">Mon Abonnement</a>
-						<a href="{{path('app_planning')}}">Reserver mes Cours</a>
+						{% if is_granted('ROLE_ADMIN') == false and is_granted("ROLE_COACH") == false %}
+							<a href="{{path('app_abonnement')}}">Mon Abonnement</a>
+							<a href="{{path('app_planning')}}">Reserver mes Cours</a>
+						{% endif %}
 						<a href="{{path('app_logout')}}">Se Deconnecter</a>
 					</section>
-
-
 				</div>
 			{% else %}
 				<a href="{{path('login')}}">
 					<button class="button">SE CONNECTER</button>
 				</a>
-
 			{% endif %}
-
 		</li>
-
-
-	</nav>
+	</ul>
+</nav>

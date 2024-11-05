@@ -22,8 +22,6 @@ class Reservation
     #[ORM\JoinColumn(nullable: false)]
     private ?Cour $cour = null;
 
-   
-
     #[ORM\Column(length: 50)]
     private ?string $status = null;
 

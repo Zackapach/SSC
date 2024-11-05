@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zones{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_row(form.name)}}
+        {{ form_row(form.description)}}
+        {{ form_row(form.location)}}
+        <button type="submit">Créer une zone</button>
+    {{ form_end(form) }}
+{% endblock %}
