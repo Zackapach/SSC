@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Reservation;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -34,25 +36,23 @@ class CoursController extends AbstractController
             'cours' => $jsonCours,
         ]);
     }
-    #[Route('/cours/reserver/{id}', name: 'cours_reserver')]
-    public function reserver(Request $request, Cour $cour): Response
+    #[Route('/cours/reserver/{id}/{date}', name: 'cours_reserver')]
+    public function reserver(Cour $cour, string $date, EntityManagerInterface $entityManager): Response
     {
+        $reservation = new Reservation();
+        $reservation
+            ->setCour($cour)
+            ->setUser($this->getUser())
+            ->setStatus('pending')
+            ->setReservationDate(new \DateTimeImmutable($date))
+        ;
 
-        $form = $this->createForm(CoursReservationType::class);
-        $form->handleRequest($request);
+        $entityManager->persist($reservation);
+        $entityManager->flush();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Logique de réservation (par exemple, enregistrer les informations de l'utilisateur)
+        $this->addFlash('success', 'Votre réservation a été enregistrée.');
 
-            $this->addFlash('success', 'Votre réservation a été enregistrée.');
-
-            return $this->redirectToRoute('cours_index');
-        }
-
-        return $this->render('coursreservation/coursreservation.html.twig', [
-            'cours' => $cour,
-            'coursreservation' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('home');
     }
 
 }

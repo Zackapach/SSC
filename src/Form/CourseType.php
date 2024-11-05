@@ -27,11 +27,6 @@ class CourseType extends AbstractType
                 'class' => Zone::class,
                 'choice_label' => 'name',
             ])
-            ->add('calendrier', DateTimeType::class, [
-                'widget' => 'single_text',
-            ])
-            ->add('duration', TimeType::class, [
-            ])
         ;
     }
 

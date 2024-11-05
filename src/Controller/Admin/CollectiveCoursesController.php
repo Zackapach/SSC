@@ -3,8 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Cour;
+use App\Entity\Planning;
+use App\Form\CollectiveCourseType;
 use App\Form\CourseType;
 use App\Repository\CourRepository;
+use App\Repository\PlanningRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,35 +24,32 @@ class CollectiveCoursesController extends AbstractController
     ////////////////-----------------------------------//
 
     #[Route('/', name: 'index')]
-    public function index(CourRepository $courRepository): Response
+    public function index(PlanningRepository $planningRepository): Response
     {
-        $courses = $courRepository->findBy(['user' => $this->getUser()]);
-
         return $this->render('collective_courses/index.html.twig', [
-            'courses' => $courses,
+            'plannings' => $planningRepository->findAll(),
         ]);
     }
 
     #[Route('/new', name: 'new')]
     public function new(Request $request, EntityManagerInterface $entityManagerInterface): Response
     {
-        // WIP Cours collectif
-        $course = new Cour;
-        $form = $this->createForm(CourseType::class, $course);
+        $planning = new Planning();
+        $form = $this->createForm(CollectiveCourseType::class, $planning);
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
-            $course->setUser($this->getUser());
-            $date = $form->get('duration')->getData();
-            $course->setDuration($date->getTimestamp() / 60);
-            
-            $entityManagerInterface->persist($course);
+//            $planning
+//            $date = $form->get('duration')->getData();
+//            $course->setDuration($date->getTimestamp() / 60);
+
+            $entityManagerInterface->persist($planning);
             $entityManagerInterface->flush();
 
-            return $this->redirectToRoute('app_courses');
+            return $this->redirectToRoute('app_collective_courses_index');
         }
 
-        return $this->render('courses/new.html.twig', [
+        return $this->render('collective_courses/new.html.twig', [
             'form' => $form,
         ]);
     }

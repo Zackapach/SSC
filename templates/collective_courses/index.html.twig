@@ -3,10 +3,12 @@
 {% block title %}Hello CoursesController!{% endblock %}
 
 {% block body %}
+    <a href="{{ path('app_collective_courses_new') }}">Ajouter des cours collectif</a>
 <style>
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-bottom: 200px;
         }
         th, td {
             border: 1px solid #ddd;
@@ -25,21 +27,27 @@
         <tr>
             <th>Title</th>
             <th>Description</th>
-            <th>Duration</th>
+            <th>Jours de la semaine</th>
             <th>Zone</th>
-            <th>Date</th>
-            <th>Action</th>
+            <th>Heure de debut/fin</th>
+            <th>Couleur</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-       {% for course in courses %}
+       {% for planning in plannings %}
         <tr>
-            <td>{{ course.title }}</td>
-            <td>{{ course.description }}</td>
-            <td>{{ course.duration.getTimestamp() / 60}} /min</td>
-            <td>{{ course.zone.name }}</td>
-            <td>{{ course.calendrier|date('d-m-Y h:m') }}</td>
-            <td><a href="{{ path('app_courses_edit', {'id': course.id }) }}">Modifier</button></td>
+            <td>{{ planning.cour.title }}</td>
+            <td>{{ planning.cour.description }}</td>
+            <td>
+                {% for day in planning.daysOfWeek %}
+                    {{ day.name }} ,
+                {% endfor %}
+            </td>
+            <td>{{ planning.zone.name }}</td>
+            <td>{{ planning.heureDebut|date('H:i') }} - {{ planning.heureFin|date('H:i') }}</td>
+            <td style="background-color: {{ planning.color }}">{{ planning.color }}</td>
+{#            <td><a href="{{ path('app_courses_edit', {'id': course.id }) }}">Modifier</button></td>#}
         </tr>
     {% endfor %}
     </tbody>

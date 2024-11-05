@@ -18,7 +18,7 @@ class CoursesController extends AbstractController
     #[Route('/courses', name: 'app_courses')]
     public function index(CourRepository $courRepository): Response
     {
-        $courses = $courRepository->findBy(['user' => $this->getUser()]);
+        $courses = $courRepository->findAll();
 
         return $this->render('courses/index.html.twig', [
             'courses' => $courses,
@@ -34,8 +34,8 @@ class CoursesController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
             $course->setUser($this->getUser());
-            $date = $form->get('duration')->getData();
-            $course->setDuration($date->getTimestamp() / 60);
+//            $date = $form->get('duration')->getData();
+//            $course->setDuration($date->getTimestamp() / 60);
             
             $entityManagerInterface->persist($course);
             $entityManagerInterface->flush();

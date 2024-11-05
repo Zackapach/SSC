@@ -3,43 +3,314 @@
 {% block title %}Réserver un Cours{% endblock %}
 
 {% block body %}
-<section class="reservation">
-<h1>Réserver un Cours</h1>
-    {{ form_start(form) }}
+    <div style="margin-top: 200px" id='calendar'></div>
 
-    <div class="form-group">
-        {{ form_label(form.date) }}
-        {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.date) }}
-    </div>
+    <div id="events" style="display: none" data-event="{{ jsonPlannings|json_encode }}"></div>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script>
+        let events = document.querySelector('#events');
 
-    <div class="form-group">
-        {{ form_label(form.heureDebut) }}
-        {{ form_widget(form.heureDebut, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.heureDebut) }}
-    </div>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'fr',
+                height:900,
+                firstDay: 1,
+                hiddenDays:[0],
+                initialView: 'timeGridWeek',
+                headerToolbar: {
+                    start: 'title',
+                    center: '',
+                    end: 'timeGridWeek today prev,next'},
+                slotMinTime: '09:00:00',
+                slotMaxTime: '21:30:00',
+                allDaySlot: false
+                ,
+                events: JSON.parse(events.getAttribute('data-event')),
 
-    <div class="form-group">
-        {{ form_label(form.heureFin) }}
-        {{ form_widget(form.heureFin, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.heureFin) }}
-    </div>
+                // events: [
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'Muaï Thaï',
+                //         daysOfWeek: ['1','3'],
+                //         startTime:'10:00:00',
+                //         endTime:'12:30:00',
+                //         color:'orange'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'RS Boxing',
+                //         daysOfWeek: ['1'],
+                //         startTime:'19:00:00',
+                //         endTime:'20:00:00',
+                //         color:'blue'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'RS Boxing',
+                //         daysOfWeek: ['1'],
+                //         startTime:'12:30:00',
+                //         endTime:'13:30:00',
+                //         color:'blue'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'Wood',
+                //         daysOfWeek: ['1'],
+                //         startTime:'12:30:00',
+                //         endTime:'13:30:00',
+                //         color:'purple'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'Wood',
+                //         daysOfWeek: ['1','3'],
+                //         startTime:'17:30:00',
+                //         endTime:'18:30:00',
+                //         color:'purple'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'Muaï Thaï',
+                //         daysOfWeek: ['1'],
+                //         startTime:'18:00:00',
+                //         endTime:'19:00:00',
+                //         color:'orange'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'MMA',
+                //         daysOfWeek: ['1'],
+                //         startTime:'20:00:00',
+                //         endTime:'21:15:00',
+                //         color:'green'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'Cross Training',
+                //         daysOfWeek: ['1'],
+                //         startTime:'18:30:00',
+                //         endTime:'19:30:00',
+                //         color:'purple'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'Boxe Anglaise',
+                //         daysOfWeek: ['1','3'],
+                //         startTime:'19:30:00',
+                //         endTime:'21:00:00',
+                //         color:'red'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'Muaï Thaï',
+                //         daysOfWeek: ['2'],
+                //         startTime:'19:45:00',
+                //         endTime:'21:00:00',
+                //         color:'orange'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'PREPA FIGHT',
+                //         daysOfWeek: ['2','4'],
+                //         startTime:'17:30:00',
+                //         endTime:'18:30:00',
+                //         color:'blue'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'Grappling',
+                //         daysOfWeek: ['2','4'],
+                //         startTime:'18:30:00',
+                //         endTime:'19:45:00',
+                //         color:'green'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'Lutte',
+                //         daysOfWeek: ['2','4'],
+                //         startTime:'10:00:00',
+                //         endTime:'12:30:00',
+                //         color:'green'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'RS Boxing',
+                //         daysOfWeek: ['2','3','4','5'],
+                //         startTime:'12:30:00',
+                //         endTime:'13:30:00',
+                //         color:'blue'
+                //     },
+                //     {
+                //         groupId:'Thaï1',
+                //         title:'Wood',
+                //         daysOfWeek: ['2','3','4','5'],
+                //         startTime:'12:30:00',
+                //         endTime:'13:30:00',
+                //         color:'purple'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'Thaï Kids',
+                //         daysOfWeek: ['3'],
+                //         startTime:'14:00:00',
+                //         endTime:'15:00:00',
+                //         color:'black'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'Thaï ados',
+                //         daysOfWeek: ['3'],
+                //         startTime:'15:00:00',
+                //         endTime:'16:00:00',
+                //         color:'black'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'Thaï Ados',
+                //         daysOfWeek: ['3'],
+                //         startTime:'16:00:00',
+                //         endTime:'17:30:00',
+                //         color:'black'
+                //     },
+                //
+                //     {
+                //        groupId:'MMA1',
+                //         title:'Muaï Thaï',
+                //         daysOfWeek: ['3'],
+                //         startTime:'19:45:00',
+                //         endTime:'21:00:00',
+                //         color:'orange'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'Muaï Thaï',
+                //         daysOfWeek: ['4'],
+                //         startTime:'19:45:00',
+                //         endTime:'21:00:00',
+                //         color:'orange'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'RENFO',
+                //         daysOfWeek: ['4'],
+                //         startTime:'18:30:00',
+                //         endTime:'19:30:00',
+                //         color:'purple'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'CARDIO',
+                //         daysOfWeek: ['4'],
+                //         startTime:'19:30:00',
+                //         endTime:'20:30:00',
+                //         color:'purple'
+                //     },
+                //      {
+                //        groupId:'MMA1',
+                //         title:'Grappling / MMA',
+                //         daysOfWeek: ['5'],
+                //         startTime:'10:30:00',
+                //         endTime:'12:00:00',
+                //         color:'green'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'MMA',
+                //         daysOfWeek: ['5'],
+                //         startTime:'17:30:00',
+                //         endTime:'18:30:00',
+                //         color:'green'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'Cross Training',
+                //         daysOfWeek: ['5'],
+                //         startTime:'18:00:00',
+                //         endTime:'19:00:00',
+                //         color:'purple'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'Boxe Anglaise',
+                //         daysOfWeek: ['5'],
+                //         startTime:'19:00:00',
+                //         endTime:'20:15:00',
+                //         color:'red'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'Muaï Thaï',
+                //         daysOfWeek: ['5'],
+                //         startTime:'19:45:00',
+                //         endTime:'21:00:00',
+                //         color:'orange'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'Thaï Kids',
+                //         daysOfWeek: ['6'],
+                //         startTime:'09:00:00',
+                //         endTime:'10:00:00',
+                //         color:'black'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'Thaï Ados',
+                //         daysOfWeek: ['6'],
+                //         startTime:'10:00:00',
+                //         endTime:'11:00:00',
+                //         color:'black'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'Boxe Anglaise',
+                //         daysOfWeek: ['6'],
+                //         startTime:'11:00:00',
+                //         endTime:'12:00:00',
+                //         color:'red'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'RS Boxing',
+                //         daysOfWeek: ['6'],
+                //         startTime:'11:00:00',
+                //         endTime:'12:00:00',
+                //         color:'blue'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'Cross Training',
+                //         daysOfWeek: ['6'],
+                //         startTime:'11:30:00',
+                //         endTime:'12:30:00',
+                //         color:'purple'
+                //     },
+                //     {
+                //        groupId:'MMA1',
+                //         title:'sparring',
+                //         daysOfWeek: ['6'],
+                //         startTime:'13:30:00',
+                //         endTime:'14:00:00',
+                //         color:'yellow'
+                //     },
+                //
+                //  ]
 
-    <div class="form-group">
-        {{ form_label(form.cour) }}
-        {{ form_widget(form.cour, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.cour) }}
-    </div>
 
-    <div class="form-group">
-        {{ form_label(form.zone) }}
-        {{ form_widget(form.zone, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.zone) }}
-    </div>
 
-    <button type="submit" class="btn btn-primary">Réserver</button>
+                eventClick: function(info) {
+                    console.log(info);
+                    console.log(info.event.start);
 
-    {{ form_end(form) }}
-</section>
-   
+                    const formattedDate = new Intl.DateTimeFormat('fr-FR', { year: 'numeric', month: 'numeric', day: 'numeric' }).format(info.event.start);
+                    console.log(formattedDate)
+
+                    document.location.replace('http://127.0.0.1:8000/cours/reserver/' + info.event.id + '/' + formattedDate.replace(/\//g, '-'));
+                }
+            });
+            calendar.render();
+        });
+
+    </script>
 {% endblock %}

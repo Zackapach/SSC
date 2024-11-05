@@ -58,12 +58,6 @@ class Cour
     #[ORM\OneToMany(targetEntity: Avis::class, mappedBy: 'cour', orphanRemoval: true)]
     private Collection $avis;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $calendrier = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $duration = null;
-
     public function __construct()
     {
         $this->planning = new ArrayCollection();
@@ -247,30 +241,6 @@ class Cour
                 $avi->setCour(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getCalendrier(): ?\DateTimeInterface
-    {
-        return $this->calendrier;
-    }
-
-    public function setCalendrier(\DateTimeInterface $calendrier): static
-    {
-        $this->calendrier = $calendrier;
-
-        return $this;
-    }
-
-    public function getDuration(): ?\DateTimeInterface
-    {
-        return $this->duration;
-    }
-
-    public function setDuration(\DateTimeInterface $duration): static
-    {
-        $this->duration = $duration;
 
         return $this;
     }

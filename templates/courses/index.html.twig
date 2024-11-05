@@ -7,6 +7,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-bottom: 200px;
         }
         th, td {
             border: 1px solid #ddd;
@@ -20,14 +21,13 @@
             background-color: #f5f5f5;
         }
     </style>
+    <a href="{{ path('app_courses_new') }}">Creer un nouveau cour</a>
 <table>
     <thead>
         <tr>
             <th>Title</th>
             <th>Description</th>
             <th>Duration</th>
-            <th>Zone</th>
-            <th>Date</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -36,9 +36,9 @@
         <tr>
             <td>{{ course.title }}</td>
             <td>{{ course.description }}</td>
-            <td>{{ course.duration.getTimestamp() / 60}} /min</td>
+{#            <td>{{ course.duration.getTimestamp() / 60}} /min</td>#}
             <td>{{ course.zone.name }}</td>
-            <td>{{ course.calendrier|date('d-m-Y h:m') }}</td>
+{#            <td>{{ course.calendrier|date('d-m-Y h:m') }}</td>#}
             <td><a href="{{ path('app_courses_edit', {'id': course.id }) }}">Modifier</a></td>
         </tr>
     {% endfor %}

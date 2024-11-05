@@ -36,16 +36,16 @@
 						</div>
 						<a href="{{path('app_user_profil_modif_edit')}}">Mon profil</a>
 						{% if is_granted('ROLE_COACH') and is_granted('ROLE_ADMIN') == false %}
-							<a href="{{ path('app_courses')}}">Gerer mes cours</a>
 							<a href="{{path('cours_index')}}">Mon Planing</a>
 						{% endif %}
 						{% if is_granted('ROLE_ADMIN') %}
-							<a href="{{ path('app_collective_courses_index')}}">Gerer les cours collectif</a>
+							<a href="{{ path('app_courses')}}">Gerer les cours</a>
+							<a href="{{ path('app_collective_courses_index')}}">Gerer le planning collectif</a>
 							<a href="{{ path('app_zones_index')}}">Gerer les Zones</a>
 						{% endif %}
 						{% if is_granted('ROLE_ADMIN') == false and is_granted("ROLE_COACH") == false %}
 							<a href="{{path('app_abonnement')}}">Mon Abonnement</a>
-							<a href="{{path('app_planning')}}">Reserver mes Cours</a>
+							<a href="{{path('app_planning')}}">Reserver des cours collectif</a>
 						{% endif %}
 						<a href="{{path('app_logout')}}">Se Deconnecter</a>
 					</section>

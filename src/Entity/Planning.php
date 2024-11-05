@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\DaysOfWeekEnum;
 use App\Repository\PlanningRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -20,7 +21,7 @@ class Planning
     #[ORM\JoinColumn(nullable: false)]
     private ?Cour $cour = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
@@ -38,6 +39,12 @@ class Planning
      */
     #[ORM\OneToMany(targetEntity: Planning::class, mappedBy: 'user')]
     private Collection $plannings;
+
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, enumType: DaysOfWeekEnum::class)]
+    private array $daysOfWeek = [];
+
+    #[ORM\Column(length: 50)]
+    private ?string $color = null;
 
     public function __construct()
     {
@@ -66,7 +73,7 @@ class Planning
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): static
+    public function setDate(?\DateTimeInterface $date): static
     {
         $this->date = $date;
 
@@ -135,6 +142,33 @@ class Planning
                 $planning->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return DaysOfWeekEnum[]
+     */
+    public function getDaysOfWeek(): array
+    {
+        return $this->daysOfWeek;
+    }
+
+    public function setDaysOfWeek(array $daysOfWeek): static
+    {
+        $this->daysOfWeek = $daysOfWeek;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): static
+    {
+        $this->color = $color;
 
         return $this;
     }
