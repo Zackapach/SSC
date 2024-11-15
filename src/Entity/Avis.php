@@ -19,7 +19,7 @@ class Avis
 
     #[ORM\ManyToOne(inversedBy: 'avis')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Cour $cour = null;
+    private ?course $course = null;
 
     #[ORM\Column]
     private ?int $notation = null;
@@ -47,14 +47,14 @@ class Avis
         return $this;
     }
 
-    public function getCour(): ?Cour
+    public function getCourse(): ?course
     {
-        return $this->cour;
+        return $this->course;
     }
 
-    public function setCour(?Cour $cour): static
+    public function setCourse(?course $course): static
     {
-        $this->cour = $cour;
+        $this->course = $course;
 
         return $this;
     }

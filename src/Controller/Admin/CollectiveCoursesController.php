@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller\Coach;
+namespace App\Controller\Admin;
 
 use App\Entity\Cour;
 use App\Form\CourseType;
-use App\Repository\CourRepository;
+use App\Repository\CourseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[IsGranted('ROLE_COACH')]
+#[IsGranted('ROLE_ADMIN')]
 #[Route('/collective/courses', name: 'app_collective_courses_')]
 class CollectiveCoursesController extends AbstractController
 {
@@ -21,7 +21,7 @@ class CollectiveCoursesController extends AbstractController
     ////////////////-----------------------------------//
 
     #[Route('/', name: 'index')]
-    public function index(CourRepository $courRepository): Response
+    public function index(CourseRepository $courRepository): Response
     {
         $courses = $courRepository->findBy(['user' => $this->getUser()]);
 
@@ -41,7 +41,7 @@ class CollectiveCoursesController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $course->setUser($this->getUser());
             $date = $form->get('duration')->getData();
-            $course->setDuration($date->getTimestamp() / 60);
+            $course->setDuration($date->getTimestamp() );
             
             $entityManagerInterface->persist($course);
             $entityManagerInterface->flush();

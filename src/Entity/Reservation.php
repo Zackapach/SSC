@@ -20,18 +20,16 @@ class Reservation
 
     #[ORM\ManyToOne(inversedBy: 'reservation')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Cour $cour = null;
-
-   
+    private ?Course $course = null;
 
     #[ORM\Column(length: 50)]
     private ?string $status = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $reservationDate = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $createdAt = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $reservationTime = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $updatedAt = null;
 
     public function getId(): ?int
     {
@@ -50,14 +48,14 @@ class Reservation
         return $this;
     }
 
-    public function getCour(): ?Cour
+    public function getCourse(): ?Course
     {
-        return $this->cour;
+        return $this->course;
     }
 
-    public function setCour(?Cour $cour): static
+    public function setCourse(?Course $course): static
     {
-        $this->cour = $cour;
+        $this->course = $course;
 
         return $this;
     }
@@ -74,26 +72,26 @@ class Reservation
         return $this;
     }
 
-    public function getReservationDate(): ?\DateTimeInterface
+    public function getcreatedAt(): ?\DateTimeInterface
     {
-        return $this->reservationDate;
+        return $this->createdAt;
     }
 
-    public function setReservationDate(\DateTimeInterface $reservationDate): static
+    public function setCreatedAt(\DateTimeInterface $createdAt): static
     {
-        $this->reservationDate = $reservationDate;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getReservationTime(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->reservationTime;
+        return $this->updatedAt;
     }
 
-    public function setReservationTime(\DateTimeInterface $reservationTime): static
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): static
     {
-        $this->reservationTime = $reservationTime;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

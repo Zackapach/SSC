@@ -2,9 +2,11 @@
 
 namespace App\Controller\Coach;
 
-use App\Entity\Cour;
+use App\Entity\Course;
 use App\Form\CourseType;
-use App\Repository\CourRepository;
+use App\Entity\User;
+use App\Repository\CourseRepository;
+use App\Repository\ReservationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,13 +14,29 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[IsGranted('ROLE_COACH')]
+use function PHPUnit\Framework\throwException;
+
 class CoursesController extends AbstractController
 {
     #[Route('/courses', name: 'app_courses')]
-    public function index(CourRepository $courRepository): Response
+    public function index(CourseRepository $courseRepository, ReservationRepository $reservationRepository): Response
     {
-        $courses = $courRepository->findBy(['user' => $this->getUser()]);
+
+
+        $user = $this->getUser();
+
+        if (!$user) {
+            throw new \LogicException('Vous devez être connecté pour accéder à cette page');
+        }
+
+        $courses = [];
+        if($user->getRoles() == ["ROLE_COACH"]){
+            $courses = $courseRepository->findBy(['coach' => $user]);
+        }
+        else if($user->getRoles() == ["ROLE_USER"]){
+            $courses = $reservationRepository->findBy(['user' => $user]);
+        }
+
 
         return $this->render('courses/index.html.twig', [
             'courses' => $courses,
@@ -28,14 +46,12 @@ class CoursesController extends AbstractController
     #[Route('/courses/new', name: 'app_courses_new')]
     public function new(Request $request, EntityManagerInterface $entityManagerInterface): Response
     {
-        $course = new Cour;
+        $course = new Course;
         $form = $this->createForm(CourseType::class, $course);
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
-            $course->setUser($this->getUser());
-            $date = $form->get('duration')->getData();
-            $course->setDuration($date->getTimestamp() / 60);
+            $course->setCoach($this->getUser());
             
             $entityManagerInterface->persist($course);
             $entityManagerInterface->flush();
@@ -49,7 +65,7 @@ class CoursesController extends AbstractController
     }
 
     #[Route('/courses/edit/{id}', name: 'app_courses_edit')]
-    public function edit(Cour $course, Request $request, EntityManagerInterface $entityManagerInterface): Response
+    public function edit(Course $course, Request $request, EntityManagerInterface $entityManagerInterface): Response
     {
         $form = $this->createForm(CourseType::class, $course);
 

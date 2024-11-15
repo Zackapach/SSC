@@ -46,14 +46,17 @@
 						<a href="{{path('app_user_profil_modif_edit')}}">Mon profil</a>
 						{% if is_granted('ROLE_COACH') and is_granted('ROLE_ADMIN') == false %}
 							<a href="{{ path('app_courses')}}">Gerer mes cours</a>
+							<a href="{{ path('app_courses_new')}}">Ajouter des cours</a>
+
 						{% endif %}
 						{% if is_granted('ROLE_ADMIN') %}
-							<a href="{{ path('app_collective_courses')}}">Gerer les cours collectif</a>
+							<a href="{{ path('app_update_role_user_index')}}">Gerer les utilisateurs</a>
+							{# <a href="{{ path('app_collective_courses')}}">Gerer les cours collectif</a> #}
 						{% endif %}
 
-						<a href="{{path('cours_index')}}">Mon Planing</a>
+						<a href="{{path('courses')}}">Planning des cours</a>
 						<a href="{{path('app_abonnement')}}">Mon Abonnement</a>
-						<a href="{{path('app_planning')}}">Reserver mes Cours</a>
+						<a href="#">Mes réservations</a>
 						<a href="{{path('app_logout')}}">Se Deconnecter</a>
 					</section>
 

@@ -27,6 +27,7 @@ class UserFixture extends Fixture
                 'password'
             ))
              ->setIsVerified(true);
+             
 
              $this->addReference('user_' . $i, $user);
 

@@ -2,41 +2,32 @@
 
 namespace App\Form;
 
-use App\Entity\Cour;
-use App\Entity\Notification;
+use App\Entity\Course;
+use App\Entity\Reservation;
 use App\Entity\User;
-use App\Entity\Zone;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CoursReservationType extends AbstractType
+class Reservation1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
-            ->add('description')
-            ->add('calendrier', null, [
+            ->add('status')
+            ->add('createdAt', null, [
                 'widget' => 'single_text',
             ])
-            ->add('heure', null, [
+            ->add('updatedAt', null, [
                 'widget' => 'single_text',
             ])
-            ->add('duration')
-            ->add('disponible')
-            ->add('nombrePlaceDisponible')
             ->add('user', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',
             ])
-            ->add('zone', EntityType::class, [
-                'class' => Zone::class,
-                'choice_label' => 'id',
-            ])
-            ->add('notifcation', EntityType::class, [
-                'class' => Notification::class,
+            ->add('course', EntityType::class, [
+                'class' => Course::class,
                 'choice_label' => 'id',
             ])
         ;
@@ -45,7 +36,7 @@ class CoursReservationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Cour::class,
+            'data_class' => Reservation::class,
         ]);
     }
 }

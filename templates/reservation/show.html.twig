@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservation{% endblock %}
+
+{% block body %}
+    <style>
+        /* Styles personnalisés similaires au template des détails du cours */
+        .body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            min-height: 63.5vh;
+            width: 60vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1, h2, h3 {
+            color: #c0392b;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f5f5f5;
+            color: #c0392b;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .btn-back, .btn-edit {
+            background-color: #c0392b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .btn-back:hover, .btn-edit:hover {
+            background-color: #e74c3c;
+        }
+    </style>
+
+    <section class="body">
+        <div class="container mt-5">
+            <h1 class="mb-4">Réservation</h1>
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ reservation.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>{{ reservation.status }}</td>
+                    </tr>
+                    <tr>
+                        <th>Créé le</th>
+                        <td>{{ reservation.createdAt ? reservation.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mis à jour le</th>
+                        <td>{{ reservation.updatedAt ? reservation.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Boutons d'actions -->
+            <div class="mt-4">
+                <a href="{{ path('app_reservation_index') }}" class="btn-back">Retour à la liste</a>
+                <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" class="btn-edit">Modifier</a>
+                {{ include('reservation/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

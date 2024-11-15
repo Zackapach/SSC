@@ -30,14 +30,14 @@ class Notification
     private ?User $user = null;
 
     /**
-     * @var Collection<int, Cour>
+     * @var Collection<int, course>
      */
-    #[ORM\OneToMany(targetEntity: Cour::class, mappedBy: 'notifcation', orphanRemoval: true)]
-    private Collection $cour;
+    #[ORM\OneToMany(targetEntity: course::class, mappedBy: 'notifcation', orphanRemoval: true)]
+    private Collection $course;
 
     public function __construct()
     {
-        $this->cour = new ArrayCollection();
+        $this->course = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,29 +94,29 @@ class Notification
     }
 
     /**
-     * @return Collection<int, Cour>
+     * @return Collection<int, course>
      */
-    public function getCour(): Collection
+    public function getCourse(): Collection
     {
-        return $this->cour;
+        return $this->course;
     }
 
-    public function addCour(Cour $cour): static
+    public function addCourse(course $course): static
     {
-        if (!$this->cour->contains($cour)) {
-            $this->cour->add($cour);
-            $cour->setNotifcation($this);
+        if (!$this->course->contains($course)) {
+            $this->course->add($course);
+            $course->setNotifcation($this);
         }
 
         return $this;
     }
 
-    public function removeCour(Cour $cour): static
+    public function removeCourse(course $course): static
     {
-        if ($this->cour->removeElement($cour)) {
+        if ($this->course->removeElement($course)) {
             // set the owning side to null (unless already changed)
-            if ($cour->getNotifcation() === $this) {
-                $cour->setNotifcation(null);
+            if ($course->getNotifcation() === $this) {
+                $course->setNotifcation(null);
             }
         }
 

@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du course{% endblock %}
+
+{% block body %}
+    <style>
+
+    .body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+        /* Styles personnalisés */
+        .container {
+            min-height: 63.5vh;
+            width : 60vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1, h2, h3 {
+            color: #c0392b;
+        }
+
+        .card {
+            border: 2px solid #c0392b;
+        }
+
+        .card-body {
+            background-color: #f5f5f5;
+        }
+
+        .card-title {
+            color: #c0392b;
+        }
+
+        .btn-reserver {
+            background-color: #c0392b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-reserver:hover {
+            background-color: #e74c3c;
+        }
+
+        ul {
+            color: #333;
+        }
+    </style>
+<section class="body">
+    <div class="container mt-5">
+        <h1 class="mb-4">Détails du course</h1>
+
+        {% if course %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ course.title }}</h2>
+                    <p class="card-text"><strong>Description :</strong> {{ course.description }}</p>
+                    <p><strong>Places disponibles :</strong> {{ course.availablePlaces }}</p>
+                    <p><strong>Durée (en heures) :</strong> {{ course.duration }}</p>
+                    <p><strong>Emploi du temps :</strong> {{ course.startDatetime|date('Y-m-d H:i') }}</p>
+                </div>
+            </div>
+
+            <h3 class="mt-4">Informations supplémentaires</h3>
+            <ul>
+                <li><strong>Coach :</strong> {{ course.coach.userProfil.firstName}}</li>
+                <li><strong>Zone :</strong> {{ course.zone.name}}</li>
+            </ul>
+
+            <!-- Bouton Réserver -->
+             <a href="{{ path('course_reserver', {'id': course.id}) }}" onclick="return confirm('êtes vous sur de vouloir réserver ce créneau ?')" class="btn-reserver">Réserver</a>
+        {% else %}
+            <p>Aucune donnée de course disponible.</p>
+        {% endif %}
+    </div>
+    </section>
+{% endblock %}

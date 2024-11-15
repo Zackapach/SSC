@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20241031142943 extends AbstractMigration
+final class Version20241113100822 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,7 +20,7 @@ final class Version20241031142943 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE cour CHANGE duration duration DATETIME NOT NULL');
+        $this->addSql('ALTER TABLE cour CHANGE duration duration NUMERIC(10, 0) NOT NULL');
     }
 
     public function down(Schema $schema): void

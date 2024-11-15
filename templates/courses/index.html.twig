@@ -36,9 +36,9 @@
         <tr>
             <td>{{ course.title }}</td>
             <td>{{ course.description }}</td>
-            <td>{{ course.duration.getTimestamp() / 60}} /min</td>
+            <td>{{ course.duration}} /min</td>
             <td>{{ course.zone.name }}</td>
-            <td>{{ course.calendrier|date('d-m-Y h:m') }}</td>
+            <td>{{ course.startDatetime|date('d-m-Y h:m') }}</td>
             <td><a href="{{ path('app_courses_edit', {'id': course.id }) }}">Modifier</button></td>
         </tr>
     {% endfor %}

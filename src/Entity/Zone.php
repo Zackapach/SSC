@@ -29,21 +29,15 @@ class Zone
     private ?User $user = null;
 
     /**
-     * @var Collection<int, Cour>
+     * @var Collection<int, course>
      */
-    #[ORM\OneToMany(targetEntity: Cour::class, mappedBy: 'zone', orphanRemoval: true)]
-    private Collection $cour;
+    #[ORM\OneToMany(targetEntity: course::class, mappedBy: 'zone', orphanRemoval: true)]
+    private Collection $course;
 
-    /**
-     * @var Collection<int, Planning>
-     */
-    #[ORM\OneToMany(targetEntity: Planning::class, mappedBy: 'zone', orphanRemoval: true)]
-    private Collection $planning;
-
+    
     public function __construct()
     {
-        $this->cour = new ArrayCollection();
-        $this->planning = new ArrayCollection();
+        $this->course = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -100,62 +94,34 @@ class Zone
     }
 
     /**
-     * @return Collection<int, Cour>
+     * @return Collection<int, course>
      */
-    public function getCour(): Collection
+    public function getCourse(): Collection
     {
-        return $this->cour;
+        return $this->course;
     }
 
-    public function addCour(Cour $cour): static
+    public function addCourse(course $course): static
     {
-        if (!$this->cour->contains($cour)) {
-            $this->cour->add($cour);
-            $cour->setZone($this);
+        if (!$this->course->contains($course)) {
+            $this->course->add($course);
+            $course->setZone($this);
         }
 
         return $this;
     }
 
-    public function removeCour(Cour $cour): static
+    public function removeCourse(course $course): static
     {
-        if ($this->cour->removeElement($cour)) {
+        if ($this->course->removeElement($course)) {
             // set the owning side to null (unless already changed)
-            if ($cour->getZone() === $this) {
-                $cour->setZone(null);
+            if ($course->getZone() === $this) {
+                $course->setZone(null);
             }
         }
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Planning>
-     */
-    public function getPlanning(): Collection
-    {
-        return $this->planning;
-    }
 
-    public function addPlanning(Planning $planning): static
-    {
-        if (!$this->planning->contains($planning)) {
-            $this->planning->add($planning);
-            $planning->setZone($this);
-        }
-
-        return $this;
-    }
-
-    public function removePlanning(Planning $planning): static
-    {
-        if ($this->planning->removeElement($planning)) {
-            // set the owning side to null (unless already changed)
-            if ($planning->getZone() === $this) {
-                $planning->setZone(null);
-            }
-        }
-
-        return $this;
-    }
 }

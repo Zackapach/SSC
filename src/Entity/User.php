@@ -9,12 +9,10 @@ use Doctrine\Common\Collections\Collection;
 // use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -22,8 +20,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180)]
+    // Contrainte d'intégrité unique 
+    #[UniqueEntity(fields: ['email'], message: 'Cet email est déjà utilisé')]
+    // Annotation intégrée de l'entité
+    #[ORM\Column(length: 180, unique:true)]
     // #[Assert\Email(message: "Veuillez entrer un email valide")]
+    
     private ?string $email = null;
 
     /**
@@ -62,10 +64,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $paiements;
 
     /**
-     * @var Collection<int, Cour>
+     * @var Collection<int, Course>
      */
-    #[ORM\OneToMany(targetEntity: Cour::class, mappedBy: 'user', orphanRemoval: true)]
-    private Collection $cour;
+    #[ORM\OneToMany(targetEntity: Course::class, mappedBy: 'user', orphanRemoval: true)]
+    private Collection $course;
 
     /**
      * @var Collection<int, Reservation>
@@ -92,7 +94,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->notifications = new ArrayCollection();
         $this->paiements = new ArrayCollection();
-        $this->cour = new ArrayCollection();
+        $this->course = new ArrayCollection();
         $this->reservation = new ArrayCollection();
         $this->avis = new ArrayCollection();
         $this->infos = new ArrayCollection();
@@ -253,29 +255,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Cour>
+     * @return Collection<int, Course>
      */
-    public function getCour(): Collection
+    public function getCourse(): Collection
     {
-        return $this->cour;
+        return $this->course;
     }
 
-    public function addCour(Cour $cour): static
+    public function addCourse(Course $course): static
     {
-        if (!$this->cour->contains($cour)) {
-            $this->cour->add($cour);
-            $cour->setUser($this);
+        if (!$this->course->contains($course)) {
+            $this->course->add($course);
+            $course->setCoach($this);
         }
 
         return $this;
     }
 
-    public function removeCour(Cour $cour): static
+    public function removeCourse(Course $course): static
     {
-        if ($this->cour->removeElement($cour)) {
+        if ($this->course->removeElement($course)) {
             // set the owning side to null (unless already changed)
-            if ($cour->getUser() === $this) {
-                $cour->setUser(null);
+            if ($course->getCoach() === $this) {
+                $course->setCoach(null);
             }
         }
 
