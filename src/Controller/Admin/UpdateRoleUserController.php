@@ -6,11 +6,11 @@ use App\Entity\User;
 use App\Form\AdminUserUpdate;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use EasyCorp\Bundle\EasyAdminBundle\EventListener\AdminRouterSubscriber;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
@@ -26,6 +26,9 @@ class UpdateRoleUserController extends AbstractController
         ]);
     }
 
+
+
+    
     #[Route('/{id}', name: 'app_update_role_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
@@ -52,15 +55,30 @@ class UpdateRoleUserController extends AbstractController
         ]);
     }
     
-
-    #[Route('/{id}', name: 'app_update_role_user_delete', methods: ['POST'])]
-    public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($user);
-            $entityManager->flush();
+    #[Route('/{id}/delete', name: 'app_update_role_user_delete', methods: ['POST'])]
+    public function remove(
+        Request $request,
+        int $id,
+        UserRepository $userRepository,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $user = $userRepository->find($id);
+    
+        if (!$user) {
+            $this->addFlash('danger', 'Utilisateur introuvable.');
+            return $this->redirectToRoute('home');
         }
-
-        return $this->redirectToRoute('app_update_role_user_index', [], Response::HTTP_SEE_OTHER);
+    
+        if (!$this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+            $this->addFlash('danger', 'Jeton CSRF invalide.');
+            return $this->redirectToRoute('home');
+        }
+    
+        $entityManager->remove($user);
+        $entityManager->flush();
+    
+        $this->addFlash('success', 'Utilisateur supprimé avec succès.');
+        return $this->redirectToRoute('home');
     }
+    
 }

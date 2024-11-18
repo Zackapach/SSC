@@ -5,6 +5,7 @@ namespace App\Entity;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\Collection;
 // use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -46,45 +47,50 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $isActive = null;
 
-    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'], orphanRemoval: true)]
     private ?UserProfil $userProfil = null;
+
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Zone::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
+    private ?Zone $zone = null;
+    
+    
 
 
 
     /**
      * @var Collection<int, Notification>
      */
-    #[ORM\OneToMany(targetEntity: Notification::class, mappedBy: 'user', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Notification::class, mappedBy: 'user', cascade: ["remove"], orphanRemoval: true)]
     private Collection $notifications;
 
     /**
      * @var Collection<int, Paiement>
      */
-    #[ORM\OneToMany(targetEntity: Paiement::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: Paiement::class, mappedBy: 'user', cascade: ["remove"], orphanRemoval: true)]
     private Collection $paiements;
 
     /**
      * @var Collection<int, Course>
      */
-    #[ORM\OneToMany(targetEntity: Course::class, mappedBy: 'user', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Course::class, mappedBy: 'coach', cascade: ["remove"], orphanRemoval: true)]
     private Collection $course;
 
     /**
      * @var Collection<int, Reservation>
      */
-    #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'user', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'user', cascade: ["remove"], orphanRemoval: true)]
     private Collection $reservation;
 
     /**
      * @var Collection<int, Avis>
      */
-    #[ORM\OneToMany(targetEntity: Avis::class, mappedBy: 'user', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Avis::class, mappedBy: 'user', cascade: ["remove"], orphanRemoval: true)]
     private Collection $avis;
 
     /**
      * @var Collection<int, Infos>
      */
-    #[ORM\OneToMany(targetEntity: Infos::class, mappedBy: 'user', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Infos::class, mappedBy: 'user', cascade: ["remove"], orphanRemoval: true)]
     private Collection $infos;
 
     #[ORM\Column]
@@ -193,6 +199,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getZone(): ?Zone
+    {
+        return $this->zone;
+    }
+
+    public function setZone(?Zone $zone): self
+    {
+        // Si une zone existait déjà, déliez-la de l'utilisateur actuel
+        if ($this->zone !== null && $this->zone->getUser() === $this) {
+            $this->zone->setUser(null);
+        }
+    
+        // Si une nouvelle zone est définie, configurez la relation inverse
+        if ($zone !== null && $zone->getUser() !== $this) {
+            $zone->setUser($this);
+        }
+    
+        $this->zone = $zone;
+    
+        return $this;
+    }
+    
 
     /**
      * @return Collection<int, Notification>

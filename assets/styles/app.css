@@ -420,6 +420,81 @@ header .button:hover {
 
 /*************************** END SECTION PLANNING  **********************************/
 
+/************************** START SECTION BOUTIQUE  **********************************/
+section .boutique-ringside{
+  
+}
+.boutique-ringside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  background-color: black;
+}
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image{
+  background-image: url(../img/grantrs.png);
+  background-repeat: no-repeat;
+  width: 800px;
+  height: 450px;
+}
+
+/* .image img {
+  
+  width: 100%;
+  max-width: 500px;
+  object-fit: cover;
+} */
+
+.content {
+  padding: 30px;
+  color: whitesmoke;
+}
+
+.content h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.content h2 {
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.content p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.boutique-button {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.boutique-button:hover {
+  background-color: #444;
+}
+
+/*************************** END SECTION BOUTIQUE  **********************************/
+
 /************************** START SECTION CONTACT  **********************************/
 
 h4 {

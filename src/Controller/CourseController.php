@@ -18,7 +18,6 @@ class CourseController extends AbstractController
 {
     // Planning de course disponibles
     #[Route('/course', name: 'courses')]
-    // #[IsGranted('ROLE_COACH')]
     public function index(CourseRepository $courseRepository): Response
     {
         $courses = $courseRepository->createQueryBuilder('c')
@@ -68,7 +67,7 @@ class CourseController extends AbstractController
 
 
     #[Route('/course/reserver/{id}', name: 'course_reserver')]
-   // #[IsGranted('ROLE_USER')]
+   // 
     public function reserver(Request $request,int $id,CourseRepository $courseRepository,EntityManagerInterface $entityManager
     ): Response {
     
@@ -95,5 +94,7 @@ class CourseController extends AbstractController
         $this->addFlash('success', 'Votre réservation a été enregistrée.');
         return $this->redirectToRoute('app_reservation_show', ['id' => $reservation->getId()]);
     }
+
+
     
 }

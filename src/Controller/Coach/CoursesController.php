@@ -44,6 +44,7 @@ class CoursesController extends AbstractController
     }
 
     #[Route('/courses/new', name: 'app_courses_new')]
+    #[IsGranted('ROLE_COACH')]
     public function new(Request $request, EntityManagerInterface $entityManagerInterface): Response
     {
         $course = new Course;
@@ -65,6 +66,7 @@ class CoursesController extends AbstractController
     }
 
     #[Route('/courses/edit/{id}', name: 'app_courses_edit')]
+    #[IsGranted('ROLE_COACH')]
     public function edit(Course $course, Request $request, EntityManagerInterface $entityManagerInterface): Response
     {
         $form = $this->createForm(CourseType::class, $course);

@@ -24,9 +24,10 @@ class Zone
     #[ORM\Column(length: 50)]
     private ?string $location = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\OneToOne(inversedBy: 'zone', targetEntity: User::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private ?User $user = null;
+    
 
     /**
      * @var Collection<int, course>
@@ -86,12 +87,23 @@ class Zone
         return $this->user;
     }
 
-    public function setUser(User $user): static
+    public function setUser(?User $user): self
     {
+        // Si un utilisateur existait déjà, déliez-le de cette zone
+        if ($this->user !== null && $this->user->getZone() === $this) {
+            $this->user->setZone(null);
+        }
+    
+        // Si un nouvel utilisateur est défini, configurez la relation inverse
+        if ($user !== null && $user->getZone() !== $this) {
+            $user->setZone($this);
+        }
+    
         $this->user = $user;
-
+    
         return $this;
     }
+    
 
     /**
      * @return Collection<int, course>
