@@ -87,22 +87,29 @@ class Zone
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(?User $user, bool $inverseCall = true): self
     {
-        // Si un utilisateur existait déjà, déliez-le de cette zone
-        if ($this->user !== null && $this->user->getZone() === $this) {
-            $this->user->setZone(null);
+        // Évitez de réinitialiser la relation si elle est déjà correcte
+        if ($this->user === $user) {
+            return $this;
         }
     
-        // Si un nouvel utilisateur est défini, configurez la relation inverse
-        if ($user !== null && $user->getZone() !== $this) {
-            $user->setZone($this);
+        // Si un utilisateur existait déjà, déliez-le de cette zone
+        if ($this->user !== null && $inverseCall) {
+            $this->user->setZone(null, false);
+        }
+    
+        // Mettez à jour la relation inverse si demandé
+        if ($user !== null && $inverseCall) {
+            $user->setZone($this, false);
         }
     
         $this->user = $user;
     
         return $this;
     }
+    
+    
     
 
     /**

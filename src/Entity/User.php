@@ -13,7 +13,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+// Contrainte d'intégrité unique 
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[UniqueEntity(fields: ['email'], message: 'Cet email est déjà utilisé')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -21,12 +23,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    // Contrainte d'intégrité unique 
-    #[UniqueEntity(fields: ['email'], message: 'Cet email est déjà utilisé')]
-    // Annotation intégrée de l'entité
-    #[ORM\Column(length: 180, unique:true)]
-    // #[Assert\Email(message: "Veuillez entrer un email valide")]
-    
+
+
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
     /**
@@ -52,8 +51,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToOne(mappedBy: 'user', targetEntity: Zone::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private ?Zone $zone = null;
-    
-    
+
+
 
 
 
@@ -205,23 +204,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->zone;
     }
 
-    public function setZone(?Zone $zone): self
+
+    public function setZone(?Zone $zone, bool $inverseCall = true): self
     {
-        // Si une zone existait déjà, déliez-la de l'utilisateur actuel
-        if ($this->zone !== null && $this->zone->getUser() === $this) {
-            $this->zone->setUser(null);
+        // Évitez de réinitialiser la relation si elle est déjà correcte
+        if ($this->zone === $zone) {
+            return $this;
         }
-    
-        // Si une nouvelle zone est définie, configurez la relation inverse
-        if ($zone !== null && $zone->getUser() !== $this) {
-            $zone->setUser($this);
+
+        // Si une zone existait déjà, déliez-la de cet utilisateur
+        if ($this->zone !== null && $inverseCall) {
+            $this->zone->setUser(null, false);
         }
-    
+
+        // Mettez à jour la relation inverse si demandé
+        if ($zone !== null && $inverseCall) {
+            $zone->setUser($this, false);
+        }
+
         $this->zone = $zone;
-    
+
         return $this;
     }
-    
+
+
+
+
 
     /**
      * @return Collection<int, Notification>

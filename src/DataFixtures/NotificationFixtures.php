@@ -11,7 +11,7 @@ class NotificationFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $notification = new Notification();
             $notification->setMessage('Message ' . $i)
                          ->setReadStatus(false)

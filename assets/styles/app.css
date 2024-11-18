@@ -397,7 +397,6 @@ header .button:hover {
   align-items: center;
   /* height: 700px; */
   gap: 100px;
-  padding: 40px;
   background-image: url(../img/fondrouge.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -582,7 +581,7 @@ p{
   text-align: center;
 }
 
-.contact-form {
+.contact-form, .registration-form .form-group {
   margin: 0 auto;
   padding: 20px;
 }
@@ -594,6 +593,56 @@ p{
   margin-bottom: 20px;
 }
 
+.register-form-container {
+  min-height: 120vh;
+  background-image: url('../img/boxerbg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form-container h2 {
+  color: #fff;
+}
+
+.registration-form {
+  margin: auto;
+  padding: 20px 0;
+  max-width: 500px;
+}
+
+.registration-form .form-group {
+  display: flex;
+}
+
+input {
+  width: 260px;
+  height: 30px;
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+}
+
+.textarea {
+  width: 260px;
+  height: 30px;
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+}
+
+.form-check-input {
+  width: 260px;
+  height: 30px;
+  color: white !important;
+}
+
+.btn{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .form-textarea {
   width: 560px;
   padding: 10px;
@@ -601,12 +650,6 @@ p{
   border-radius: 10px;
   resize: none;
   border: none;
-}
-
-.submit-button {
-  margin-top: 30px;
-  display: flex;
-  justify-content: end;
 }
 
 .section-contact input {
@@ -744,3 +787,104 @@ p{
 }
 
 /*********************** START RESERVATION ********************/
+
+/*********************** START RESPONSIVE ********************/
+
+
+
+@media (max-width: 480px) {
+  .hero {
+    max-width: 480px;
+  }
+
+  h1 {
+    width: 80%;
+    font-size: 25px;
+  }
+
+  .discipline {
+    height: auto;
+  }
+
+  .discipline h4 {
+    padding: 10px;
+  }
+
+  .section {
+    margin: 0;
+    padding: 0;
+  }
+
+  .section-planning {
+    gap: 0;
+    flex-direction: column;
+  }
+
+  .section-planning-title{
+    padding-top: 20px;
+  }
+
+  .section-planning h4 {
+    padding-left: 140px;
+    font-size: 20px;
+  }
+
+  #calendar {
+    margin-top: 20px !important;
+  }
+
+  .grid{
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .boutique-ringside {
+    display: none;
+  }
+
+  .section-contact {
+    height: auto;
+  }
+  
+  .article-contact {
+    flex-direction: column;
+  }
+
+  .section-contact .text-contact {
+    width: 280px;
+    margin: auto;
+  }
+
+  .text-contact div {
+    width: 280px;
+  }
+
+  .section-contact .form-textarea {
+    width: 260px;
+    margin: auto;
+  }
+
+  .section-contact .contact-form {
+    max-width: 280px;
+    margin: auto;
+  }
+
+  .section-contact .form-group {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .section-contact div {
+    max-width: 400px;
+    margin: auto;
+  }
+
+  .map-container {
+    display: none;
+  }
+
+  .infos-container {
+    margin-bottom: 20px !important;
+  }
+}

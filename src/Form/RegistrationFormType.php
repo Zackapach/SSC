@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use App\Entity\UserProfil;
 use App\Form\UserProfilType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -13,41 +12,54 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('email', null, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Enter your email address',
+                ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Email is required']),
+                ],
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
+                'attr' => [
+                    'class' => 'form-check-input',
+                    'style' => 'color: white',
+                ],
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'You must agree to the terms.',
                     ]),
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'label' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Enter your password',
+                    'autocomplete' => 'new-password',
+                ],
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
+                    new NotBlank(['message' => 'Password is required']),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
+                        'minMessage' => 'Password must be at least {{ limit }} characters',
                         'max' => 4096,
                     ]),
                 ],
             ])
-            ->add('userProfil', UserProfilType::class);
-        ;
+            ->add('userProfil', UserProfilType::class, [
+                'label' => false,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

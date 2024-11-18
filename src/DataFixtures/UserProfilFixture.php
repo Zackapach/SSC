@@ -11,7 +11,7 @@ class UserProfilFixture extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             # code...
                 $userProfil = new UserProfil();
                 $userProfil

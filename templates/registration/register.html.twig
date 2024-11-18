@@ -1,30 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
-    <h1>Inscription</h1>
+	<section class="register-form-container">
+		{% for flash_error in app.flashes('verify_email_error') %}
+			<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+		{% endfor %}
 
-    {{ form_errors(registrationForm) }}
+		{{ form_errors(registrationForm) }}
+		<section class="registration-form">
+			<h2>Inscription</h2>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-            {# {{ form_errors(registrationForm.email) }} #}
+			{{ form_start(registrationForm) }}
+			<article class="form-group">
+				{{ form_row(registrationForm.email) }}
+			</article>
 
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        
-{{ form_row(registrationForm.userProfil.firstName) }}
-{{ form_row(registrationForm.userProfil.lastName) }}
-{{ form_row(registrationForm.userProfil.phone) }}
-{{ form_row(registrationForm.userProfil.adress) }}
-{{ form_row(registrationForm.userProfil.dateOfBirth) }}
-{{ form_row(registrationForm.userProfil.bio) }}
-{{ form_row(registrationForm.agreeTerms) }}
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+			{# {{ form_errors(registrationFoÒrm.email) }} #}
+
+			<article class="form-group">
+				{{ form_row(registrationForm.plainPassword )}}
+			</article>
+			<article class="form-group">
+				{{ form_row(registrationForm.userProfil.firstName) }}
+
+			</article>
+			<article class="form-group">
+				{{ form_row(registrationForm.userProfil.lastName) }}
+
+			</article>
+			<article class="form-group">
+				{{ form_row(registrationForm.userProfil.phone) }}
+
+			</article>
+			<article class="form-group">
+				{{ form_row(registrationForm.userProfil.adress) }}
+
+			</article>
+			<article class="form-group">
+				{{ form_row(registrationForm.userProfil.dateOfBirth) }}
+
+			</article>
+			<article class="form-group">
+				{{ form_row(registrationForm.userProfil.bio) }}
+
+			</article>
+			<article class="form-group">
+				{{ form_row(registrationForm.agreeTerms) }}
+			</article>
+			<article class="form-group">
+				<button type="submit" class="btn">Register</button>
+			</article>
+
+
+			{{ form_end(registrationForm) }}
+		</section>
+	</section>
+
 {% endblock %}
